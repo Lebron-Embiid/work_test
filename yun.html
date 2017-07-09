@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 700;
+	canvas.height = 500;
+	var sky = ctx.createRadialGradient(150,350,0,150,350,250);
+	sky.addColorStop(0.2,"#5AAA7B");
+	sky.addColorStop(0.8,"#31AA42");
+	ctx.fillStyle = sky;
+	ctx.strokeStyle = "#31AA42";
+	ctx.beginPath();
+	ctx.moveTo(0, 347);
+	ctx.bezierCurveTo(214, 242, 313, 502, 700, 336);
+	ctx.lineTo(canvas.width, canvas.height);
+	ctx.lineTo(0, canvas.height);
+	ctx.closePath();
+	ctx.stroke();
+	ctx.fill();
+
+	ctx.fillStyle = "#2192AD";
+	var sky = ctx.createRadialGradient(300,0,50,300,0,200);
+	sky.addColorStop(0.2,"#42AAAD");
+	sky.addColorStop(0.8,"#2192AD");
+	ctx.fillStyle = sky;
+	ctx.beginPath();
+	ctx.moveTo(0, 347);
+	ctx.bezierCurveTo(214, 242, 313, 502, 700, 336);
+	ctx.lineTo(canvas.width, 0);
+	ctx.lineTo(0, 0);
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "rgba(255,255,255,0.6)";
+	ctx.arc(125, 68, 14, 0, 6.28);		//1
+	ctx.arc(100, 80, 11, 0.84, 4.71);	//2
+	ctx.arc(120, 80, 15, 5.58, 4.51);	//3
+	ctx.arc(142, 79, 14, 0, 6.28);		//4
+	ctx.arc(111, 75, 12, 2.5, 6.28);	//5
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "rgba(255,255,255,0.6)";
+	ctx.arc(325, 38, 14, 0, 6.28);		//1
+	ctx.arc(300, 50, 11, 0.84, 4.71);	//2
+	ctx.arc(320, 50, 15, 5.58, 4.51);	//3
+	ctx.arc(342, 49, 14, 0, 6.28);		//4
+	ctx.arc(311, 45, 12, 2.5, 6.28);	//5
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "rgba(255,255,255,0.6)";
+	ctx.arc(315, 108, 14, 0, 6.28);		//1
+	ctx.arc(290, 120, 11, 0.84, 4.71);	//2
+	ctx.arc(310, 120, 15, 5.58, 4.51);	//3
+	ctx.arc(332, 119, 14, 0, 6.28);		//4
+	ctx.arc(301, 115, 12, 2.5, 6.28);	//5
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "rgba(255,255,255,0.6)";
+	ctx.arc(425, 88, 14, 0, 6.28);		//1
+	ctx.arc(400, 100, 11, 0.84, 4.71);	//2
+	ctx.arc(420, 100, 15, 5.58, 4.51);	//3
+	ctx.arc(442, 99, 14, 0, 6.28);		//4
+	ctx.arc(411, 95, 12, 2.5, 6.28);	//5
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "rgba(255,255,255,0.6)";
+	ctx.arc(175, 138, 14, 0, 6.28);		//1
+	ctx.arc(150, 150, 11, 0.84, 4.71);	//2
+	ctx.arc(170, 150, 15, 5.58, 4.51);	//3
+	ctx.arc(192, 149, 14, 0, 6.28);		//4
+	ctx.arc(161, 145, 12, 2.5, 6.28);	//5
+	ctx.closePath();
+	ctx.fill();
+</script>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+<script>
+	LInit(150,"div",800,600,main);
+	var imgList,backLayer,playlayer,play;
+	var x=y=0;
+	var a=b=i=0;
+	var ismove = false;
+	var listData = [
+		{name:"p2",path:"back.jpg"},
+		{name:"p3",path:"player.png"}
+	]
+	function main(){
+		LLoadManage.load(listData,"",show);
+	}
+	function show(result){
+		imgList = result;
+		backLayer = new LSprite();
+		addChild(backLayer);
+		addBack();
+		addPlayer();
+
+		addEvent();
+	}
+	function addBack(){
+		var bitmapdata = new LBitmapData(imgList["p2"]);
+		var bitmap = new LBitmap(bitmapdata);
+		backLayer.addChild(bitmap);
+
+		LGlobal.stage.addEventListener(LKeyboardEvent.KEY_DOWN,keydown);
+		LGlobal.stage.addEventListener(LKeyboardEvent.KEY_UP,keyup);
+	}
+
+	function addEvent(){
+		backLayer.addEventListener(LMouseEvent.MOUSE_DOWN,mousedown);
+		backLayer.addEventListener(LMouseEvent.MOUSE_UP,mouseup);
+	}
+
+	var timer;
+	function mousedown(event){
+		if(event.selfX < LGlobal.width/2){
+			left();
+			timer = setInterval(left,40);
+		}else{
+			right();
+			timer = setInterval(right,40);
+		}
+	}
+
+	function mouseup(){
+		clearInterval(timer);
+		play.setAction(0,0,1,false);
+	}
+
+	function keydown(e){
+		var code = e.keyCode;
+		switch(code){
+			case 37: left();
+					 break;
+			case 38: 
+					 // top();
+					 play.setAction(3,i,1,false);
+					 ismove = true;
+					 break;
+			case 39: 
+					 right();
+					 break;
+			case 40: 
+					 // bottom();
+					 play.setAction(0,i,1,false);
+					 ismove = true;
+					 break;
+			// default: return false;
+		}
+	}
+
+	function keyup(){
+		play.setAction(0,0,1,false);
+	}
+	function left(){
+		i++;
+		a -= 5;
+		if(a<-375){
+			a=-375;
+		}
+		play.setAction(1,i,1,false);
+		move();
+		onframe();
+		ismove = true;
+	}
+	function top(){
+		i++;
+		b -= 5;
+		if(b<-500){
+			b=-500;
+		}
+		play.setAction(1,i,1,false);
+		move();
+		onframe();
+		ismove = true;
+	}
+	function right(){
+		i++;
+		a += 5;
+		if(a>360){
+			a=360;
+		}
+		play.setAction(2,i,1,false);
+		move();
+		onframe();
+		ismove = true;
+	}
+	function bottom(){
+		i++;
+		b += 5;
+		if(b>30){
+			b=30;
+		}
+		play.setAction(1,i,1,false);
+		move();
+		onframe();
+		ismove = true;
+	}
+
+	function addPlayer(){
+		playlayer = new LSprite();
+		// playlayer.graphics.drawArc(1,"rgba(255,0,0,0.3)",[405,540,20,0,2*Math.PI],true,"rgba(255,0,0,.4)");
+		backLayer.addChild(playlayer);
+		var hero = new Player();
+	}
+	function Player(){
+		// play.setAction(2,0,1,ismove);
+		// play.x = 375+a;
+		// play.y = 400;
+		// console.log(x,y);
+		// base(this,LSprite,[]);
+		var bitmapdata = new LBitmapData(imgList["p3"],x,y,64,64);
+		var bitmap = new LBitmap(bitmapdata);
+		// bitmap.x = 375+a;
+		// bitmap.y = 400;
+		// playlayer.addChild(bitmap);
+		var list = LGlobal.divideCoordinate(256,256,4,4);
+		var data = new LBitmapData(imgList["p3"],x,y,64,64);
+		play = new LAnimation(self,data,list);
+		move();
+		playlayer.addEventListener(LEvent.ENTER_FRAME,onframe);
+	}
+	
+	function move(){
+		play.x = 372+a;
+		play.y = 500+b;
+	}
+	function onframe(){
+		play.onframe();
+	}
+
+</script>
+</html>

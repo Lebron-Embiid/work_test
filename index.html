@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<canvas id="canvas">
+		
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 800;
+	canvas.height = 800;
+
+	// cxt.fillStyle = "red";
+
+	// cxt.translate(150,150);
+	// cxt.rotate(45*Math.PI/180);
+	// cxt.fillRect(100,100,100,100);
+	// cxt.translate(50,50);
+	// cxt.fillStyle = "green";
+	// cxt.fillRect(0,0,100,100);
+	// cxt.save();
+
+	// cxt.translate(50,50);
+	// cxt.fillStyle = "blue";
+	// cxt.fillRect(0,0,100,100);
+	// cxt.translate(50,50);
+	// cxt.restore();
+	// cxt.fillStyle = "yellow";
+	// cxt.fillRect(0,0,100,100);
+	// cxt.fill();
+
+
+    // ctx.fillStyle = "rgba(132,132,192,.8)";
+    ctx.translate(300,100);
+    // ctx.fillRect(0,0,70,35);
+    for(var i=0;i<100;i++){
+    	// ctx.save();
+    	// a-=0.01;
+    	ctx.fillStyle = "rgba(132,132,192,.8)";
+    	ctx.fillRect(0,0,70,35);
+    	ctx.rotate(18*Math.PI/180);
+    	ctx.scale(.95,.95);
+    	ctx.translate(20,20);
+    	// ctx.restore();
+    }
+    // ctx.fillStyle = "#7E5205";
+    // ctx.fillRect(100,100,500,500);
+    // var a = 20;
+    // for(var i=0;i<16;i++){
+    // 	ctx.save();
+    // 	a += 20;
+    // 	ctx.fillStyle = "#D39527";
+    // 	ctx.translate(80+a,120);
+    // 	ctx.fillRect(0,0,100,100);
+    // 	ctx.restore();
+    // }
+</script>
+</html>

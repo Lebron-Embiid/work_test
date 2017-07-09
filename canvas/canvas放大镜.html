@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<canvas id="canvas" style="display:block;margin:0 auto;"></canvas>
+	<canvas id="scale" style="display:none;"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var big = document.getElementById("scale");
+	var ctx = canvas.getContext("2d");
+	var big_ctx = big.getContext("2d");
+
+	canvas.width = 1152;
+	canvas.height = 768;
+	var scale;
+	var isMouseDown = false;
+
+	var img = new Image();
+	img.src = "img.jpg";
+	img.onload = function(){
+		big.width = img.width;
+		big.height = img.height;
+		scale = big.width / canvas.width;
+		ctx.drawImage(img,0,0,canvas.width,canvas.height);
+		big_ctx.drawImage(img,0,0);
+	}
+
+	function getClient(m,n){
+		var get = canvas.getBoundingClientRect();
+		return {x:Math.round(m-get.left),y:Math.round(n-get.top)};
+	}
+	
+	canvas.addEventListener("mousedown",function(e){
+		e.preventDefault();
+		isMouseDown = true;
+		var dx = e.clientX;
+		var dy = e.clientY;
+		var client = getClient(dx,dy);
+		drawCircle(client);
+	})
+	canvas.addEventListener("mouseup",function(e){
+		e.preventDefault();
+		isMouseDown = false;
+		clearRect();
+	})
+	canvas.addEventListener("mouseout",function(e){
+		e.preventDefault();
+		isMouseDown = false;
+		clearRect();
+	})
+	canvas.addEventListener("mousemove",function(e){
+		e.preventDefault();
+		clearRect();
+		if(isMouseDown){
+			var dx = e.clientX;
+			var dy = e.clientY;
+			var client = getClient(dx,dy);
+			drawCircle(client);
+		}
+	})
+
+	function clearRect(client,isMouseDown){
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+		ctx.drawImage(img,0,0,canvas.width,canvas.height);
+	}
+
+	function drawCircle(client){
+		var mr = 200;
+		var swx = client.x*scale;
+		var swy = client.y*scale;
+
+		var sx = swx - mr;
+		var sy = swy - mr;
+
+		var mx = client.x - mr;
+		var my = client.y - mr;
+		ctx.beginPath();
+		ctx.lineWidth = 3;
+		ctx.arc(client.x,client.y,mr,0,2*Math.PI);
+		ctx.closePath();
+		ctx.save();
+		ctx.stroke();
+		ctx.clip();
+		ctx.drawImage(big,sx,sy,2*mr,2*mr,mx,my,2*mr,2*mr);
+		ctx.restore();
+	}
+
+</script>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style: none;
+			overflow: hidden;
+			width:600px;
+			margin: 20px auto;
+			padding-left: 0;
+		}
+		ul li{
+			float: left;
+			width:120px;
+			height: 70px;
+			border:2px solid #D0D0D0;
+			margin-right: 5px;
+			text-align: center;
+			line-height: 70px;
+			color:#000;
+			cursor: pointer;
+			font-family: "Arial";
+		}
+		ul:last-of-type li{
+			background: #E3E3E3;
+		}
+		ul li.active{
+			border-color: #f60;
+			color:#f60;
+		}
+		.color span,.font span{
+			display: inline-block;
+			width:70px;
+			height: 50px;
+			background: #123456;
+			color:#fff;
+			line-height: 50px;
+			text-align: center;
+			cursor: pointer;
+		}
+		#color{
+			margin-bottom: 10px;
+		}
+		#canvas:hover{
+			cursor: url(pen.ico),auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" style="display:block;margin:0 auto;"></canvas>
+	<ul class="color">
+		<li style="background:red;">red</li>
+		<li style="background:blue;">blue</li>
+		<li style="background:cyan;">cyan</li>
+		<li style="background:green;">green</li>
+		<input type="color" id="color">
+		<span class="remove">清空</span>
+	</ul>
+	<ul class="font">
+		<li>8px</li>
+		<li>16px</li>
+		<li>24px</li>
+		<li>32px</li>
+		<span class="clear">橡皮擦</span>
+	</ul>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var style = document.getElementById("color");
+	var ctx = canvas.getContext("2d");
+	var cor = document.querySelectorAll(".color li");
+	var ft = document.querySelectorAll(".font li");
+	var remove = document.querySelector(".remove");
+	var clear = document.querySelector(".clear");
+	canvas.width = 600;
+	canvas.height = 300;
+
+	var isMoveDown = false;
+	var curLoc = {x:0,y:0};
+	var color;
+	var font;
+	function writeBorad(){
+		this.back = function(){
+			ctx.save();
+			ctx.beginPath();
+			ctx.fillStyle = "#ccc";
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			ctx.fill();
+			ctx.restore();
+		};
+	};
+	function getXY(x,y){
+		var get = canvas.getBoundingClientRect();
+		return {x:parseInt(x-get.left),y:parseInt(y-get.top)};
+	}
+	var write = new writeBorad();
+	write.back();
+
+	for(var i=0;i<cor.length;i++){
+		cor[i].index = i;
+		cor[i].onclick = function(){
+			color = this.innerHTML;
+			for(var j=0;j<cor.length;j++){
+				cor[j].className = "";
+			}
+			this.className = "active";
+			canvas.style.cursor = "url(pen.ico),auto";
+		}
+	}
+	for(var i=0;i<ft.length;i++){
+		ft[i].index = i;
+		ft[i].onclick = function(){
+			font = parseInt(this.innerHTML);
+			for(var j=0;j<ft.length;j++){
+				ft[j].className = "";
+			}
+			this.className = "active";
+			canvas.style.cursor = "url(pen.ico),auto";
+		}
+	}
+
+	style.addEventListener("change",function(){
+		color = this.value;
+		canvas.style.cursor = "url(pen.ico),auto";
+	})
+
+	canvas.addEventListener("mousedown",function(e){
+		e.preventDefault();
+		isMoveDown = true;
+		curLoc = getXY(e.clientX,e.clientY);
+	})
+	canvas.addEventListener("mouseup",function(e){
+		e.preventDefault();
+		isMoveDown = false;
+	})
+	canvas.addEventListener("mouseout",function(e){
+		e.preventDefault();
+		isMoveDown = false;
+	})
+	canvas.addEventListener("mousemove",function(e){
+		e.preventDefault();
+		if(isMoveDown){
+			
+			ctx.beginPath();
+			ctx.strokeStyle = color;
+			ctx.lineWidth = font;
+			ctx.moveTo(curLoc.x,curLoc.y);
+			var lastLoc = getXY(e.clientX,e.clientY);
+			ctx.lineTo(lastLoc.x,lastLoc.y);
+			ctx.lineCap = "round";
+			ctx.stroke();
+
+			curLoc = lastLoc;
+		}
+	})
+
+	remove.addEventListener("click",function(){
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+		write.back();
+	})
+	clear.addEventListener("click",function(e){
+		canvas.style.cursor = "url(clear.ico),auto";
+		color = "#ccc";
+	})
+
+</script>
+</html>

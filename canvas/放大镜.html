@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas><br>
+	<input type="range" name="" id="range" max="400" style="width:640px;outline:none;">
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var range = document.getElementById("range");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 640;
+	canvas.height = 320;
+	
+	var scale = 1.5;
+	var cwidth = canvas.width;
+	var cheight = canvas.height;
+	var swidth=scale*canvas.width;
+	var sheight=scale*canvas.height;
+	var cR=64;
+	var isMoveDown = false;
+	var isOnInput = false;
+	var cX=0;
+	var cY=0;
+
+	range.oninput = function(){
+		isOnInput = true;
+		var size = this.value;
+		// canvas.width = size;
+		// canvas.height = size/2;
+		ctx.clearRect(0,0,canvas.width,canvas.height)
+		myscale = size/200;
+		canvas.mywidth = (canvas.width-canvas.width*myscale)/2;
+		canvas.myheight = (canvas.height-canvas.height*myscale)/2;
+		ctx.drawImage(Img,canvas.mywidth,canvas.myheight,canvas.width*myscale,canvas.height*myscale);
+		// console.log(size)
+		swidth = myscale*canvas.width;
+		sheight = myscale*canvas.height;
+		cR = size/2;
+	}
+
+	var Img = new Image();
+	Img.src = "img.jpg";
+	Img.onload = function(){
+		ctx.drawImage(Img,0,0,canvas.width,canvas.height);
+	}
+	canvas.addEventListener("mousedown",function(e){
+		isMoveDown = true;
+		cX = e.clientX;
+		cY = e.clientY;
+		var mX = scale*cX;
+		var mY = scale*cY;
+		if(isOnInput){
+			ctx.drawImage(Img,canvas.mywidth,canvas.myheight,canvas.width*myscale,canvas.height*myscale);
+		}else{
+			ctx.drawImage(Img,0,0,canvas.width,canvas.height);
+		}
+		ctx.strokeStyle = "rgba(0,0,0,0.1)";
+		ctx.beginPath();
+		ctx.arc(cX,cY,cR,0,2*Math.PI);
+		ctx.closePath();
+		ctx.save();
+		ctx.stroke();
+		ctx.clip();
+		ctx.drawImage(Img,cX-mX,cY-mY,swidth,sheight);
+		ctx.restore();
+		ctx.save();
+	})	
+	canvas.addEventListener("mouseup",function(e){
+		isMoveDown = false;
+		if(isOnInput){
+			ctx.drawImage(Img,canvas.mywidth,canvas.myheight,canvas.width*myscale,canvas.height*myscale);
+		}else{
+			ctx.drawImage(Img,0,0,canvas.width,canvas.height);
+		}
+	})
+	canvas.addEventListener("mouseout",function(e){
+		isMoveDown = false;
+		if(isOnInput){
+			ctx.drawImage(Img,canvas.mywidth,canvas.myheight,canvas.width*myscale,canvas.height*myscale);
+		}else{
+			ctx.drawImage(Img,0,0,canvas.width,canvas.height);
+		}
+	})
+	canvas.addEventListener("mousemove",function(e){
+		if(isMoveDown){
+			cX = e.clientX;
+			cY = e.clientY;
+			var mX = scale*cX;
+			var mY = scale*cY;
+			if(isOnInput){
+				ctx.drawImage(Img,canvas.mywidth,canvas.myheight,canvas.width*myscale,canvas.height*myscale);
+			}else{
+				ctx.drawImage(Img,0,0,canvas.width,canvas.height);
+			}
+			ctx.strokeStyle = "rgba(0,0,0,0.1)";
+			ctx.beginPath();
+			ctx.arc(cX,cY,cR,0,2*Math.PI);
+			ctx.closePath();
+			ctx.save();
+			ctx.stroke();
+			ctx.clip();
+			ctx.drawImage(Img,cX-mX,cY-mY,swidth,sheight);
+			ctx.restore();
+		}
+	})
+</script>
+</html>

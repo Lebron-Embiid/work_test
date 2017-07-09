@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{font-family: "黑体"}
+		#div{
+			width:100px;
+			height: 50px;
+			background: red;
+			position: absolute;
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<p id="p"></p>
+	<div id="div"></div>
+	<input type="button" value="Move" id="move">
+	<input type="button" value="Stop" id="stop">
+	<input type="button" value="Left" id="left">
+</body>
+<script>
+	//大写小写互换
+	// var str = "AbCdEfG HiJkLmN oPq RsT uVw XyZ";
+	// var str1 = str.toLowerCase();
+	// for(var i=0;i<str.length;i++){
+	// 	if(str[i] != str1[i]){
+	// 		document.write(str[i].toLowerCase());
+	// 	}else{
+	// 		document.write(str[i].toUpperCase());			
+	// 	}
+	// }
+
+	//首字母大写
+	// var mpt = window.prompt("请输入一段英文?");
+	// var str = mpt;
+	// var str2 = str.split(" ");
+	// for(var i=0;i<=str2.length;i++){
+	// 	document.write(str2[i].substr(0,1).toUpperCase());
+	// 	document.write(str2[i].substr(1,str2[i].length).toLowerCase()+"&nbsp;");
+	// }
+
+
+	//随机跳转网页
+	// var arr = ["http://www.baidu.com","http://www.qq.com","http://www.163.com"];
+	// for(var i=0;i<arr.length;i++){
+	// 	var n = Math.floor(Math.random()*arr.length);
+	// 	window.location.href = arr[n];
+	// }
+
+
+	// 倒计时
+	// var num = 10;
+	// function show(){
+	// 	var p = document.getElementById("p");
+	// 	p.innerHTML = num;
+	// 	num--;
+	// 	if(num == -1){
+	// 		clearInterval(timer);
+	// 		window.location.href = "http://www.baidu.com";
+	// 	}
+	// }
+	// var timer = setInterval(show,1000);
+	// show();
+
+
+	// 移动DIV
+	var div = document.getElementById("div");
+	var move = document.getElementById("move");
+	var stop = document.getElementById("stop");
+	var left = document.getElementById("left");
+	var n = 10;
+	move.onclick = toMove;
+	stop.onclick = toStop;
+	left.onclick = toLeft;
+	// var sWidth = screen.width;
+	// alert(div.style.height);
+	// alert(screen.width-100);
+	function toMove(){
+		clearInterval(timer);
+		n += 20;
+		div.style.left = n+"px";
+		timer = setInterval(toMove,50);
+		if(n >= window.innerWidth-100){
+			n=window.innerWidth-110;
+		}
+	}
+	function toStop(){
+		clearInterval(timer);
+	}
+	function toLeft(){
+		clearInterval(timer);
+		n -= 20;
+		div.style.left = n+"px";
+		timer = setInterval(toLeft,50);
+		if(n <= 0){
+			n=10;
+		}
+	}
+	var timer = setInterval(toMove,50);
+	toStop();
+</script>
+</html>

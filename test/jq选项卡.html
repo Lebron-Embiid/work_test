@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding: 0;}
+		.box{width:500px;height: 450px;position: relative;}
+		ul{list-style: none;width:500px;height:50px;}
+		ul li{float: left;cursor: pointer;line-height: 50px;text-align: center;width:125px;height: 50px;font-weight: bold;font-size: 20px;}
+		ul li:first-of-type{color:#96233F;background: #997752;}
+		ul li:nth-of-type(2){color:#0545AF;background: #F9C534;}
+		ul li:nth-of-type(3){color:#EDECEA;background: #0B0B09;}
+		ul li:last-of-type{color:#D10E30;background: #D9D1CF;}
+		.box div{width: 500px;height: 400px;position: absolute;bottom: 0;left: 0;display: none;}
+		.box div:first-of-type{background: url(cle.jpg)center center;}
+		.box div:nth-of-type(2){background: url(gsw.jpg)center center;}
+		.box div:nth-of-type(3){background: url(sas.jpg)center center;}
+		.box div:last-of-type{background: url(hou.jpg)center center;}
+		.box div.active{display: block;}
+	</style>
+	<script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li>CLE</li>
+			<li>GSW</li>
+			<li>SAS</li>
+			<li>HOU</li>
+		</ul>
+		<div class="active"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+<script>
+	$(function(){
+		$(".box ul li").mouseover(function(){
+			var index = $(this).index();
+			$(".box div").eq(index).addClass("active").siblings().removeClass("active");
+		})
+	})
+</script>
+</html>

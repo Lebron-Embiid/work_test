@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lufylegend-1.10.1.min.js"></script>
+	<script src="lufylegend.ui-0.14.1.min.js"></script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+<script>
+	//缓动类 LTweenLite
+	// LInit(50,"div",800,500,main);
+	// function main(){
+	// 	var layer = new LSprite();
+	// 	layer.x = 100;
+	// 	layer.y = 100;
+	// 	layer.graphics.drawArc(3,"green",[0,0,50,0,1*Math.PI],true,"red");
+	// 	addChild(layer);
+	// 	LTweenLite.to(layer,1,{rotate:30,loop:true}).to(layer,1,{rotate:-30,loop:true});
+		// var btn = new LButtonSample2("继续/暂停",16,"黑体","red");
+		// addChild(btn);
+	// 	btn.addEventListener(LMouseEvent.MOUSE_DOWN,down);
+	// }
+	// var isdown = false;
+	// function down(){
+	// 	if(isdown){
+	// 		LTweenLite.resumeAll();
+	// 		isdown = false;
+	// 	}else{
+	// 		LTweenLite.pauseAll();
+	// 		isdown = true;
+	// 	}
+	// }
+
+	//动画
+	// LInit(200,"div",800,500,main);
+	// var play;
+	// function main(){
+	// 	var loader = new LLoader();
+ //    	loader.addEventListener(LEvent.COMPLETE,show); 
+	// 	loader.load("player.png","bitmapData");
+	// }
+	// function show(event){
+	// 	var bitmap = new LBitmapData(event.target);
+	// 	var laye = new LSprite();
+	// 	addChild(laye);
+	// 	var list = LGlobal.divideCoordinate(256,256,4,4);
+	// 	play = new LAnimation(laye,bitmap,list);
+	// 	// play.setAction(3,0,1,false);
+	// 	play.addEventListener(LEvent.ENTER_FRAME,onframe);
+	// }
+	// function onframe(){
+	// 	play.onframe();
+	// }
+
+
+	// LInit(100,"div",800,500,main);
+	// var imgList;
+	// var dataList = [
+	// 	{name:"player",path:"player.png"}
+	// ]
+	// function main(){
+	// 	LLoadManage.load(dataList,"",show);
+	// }
+	// var animation;
+	// function show(re){
+	// 	var imgList = re;
+	// 	var bitmapdata = new LBitmapData(imgList["player"]);
+	// 	// var bitmap = new LBitmap(bitmapdata);
+	// 	// addChild(bitmap);
+	// 	var layer = new LSprite();
+	// 	addChild(layer);
+	// 	var list = LGlobal.divideCoordinate(256,256,4,4);
+	// 	animation = new LAnimation(layer,bitmapdata,list);
+	// 	animation.addEventListener(LEvent.ENTER_FRAME,onframe);
+	// }
+	// function onframe(){
+	// 	animation.onframe();
+	// }
+
+
+	// LInit(100,"div",400,400,main);
+	// var list;
+	// var imgList = [
+	// 	{name:"p1",path:"1.jpg"},
+	// 	{name:"p2",path:"2.jpg"}
+	// ]
+	// function main(){
+	// 	LLoadManage.load(imgList,"",show);
+	// }
+	// function show(re){
+	// 	list = re;
+	// 	var imglist = new LBitmapData(list["p1"]);
+	// 	var img = new LBitmap(imglist);
+	// 	var imglist2 = new LBitmapData(list["p2"]);
+	// 	var img2 = new LBitmap(imglist2);
+	// 	var laye = new LSprite();
+	// 	addChild(laye);
+	// 	var btn = new LButton(img,img2,img);
+	// 	addChild(btn)
+	// }
+
+
+	LInit(100,"div",490,400,main);
+	var imglist,anima;
+	var i = 1;
+	var imgData = [
+		{name:"hzdz",path:"big_skill_sunji.png"},
+		{name:"sjdz",path:"big_skill.png"},
+		{name:"szdd",path:"fall_sunji.png"}
+	]
+	function main(){
+		LLoadManage.load(imgData,"",show);
+	}
+	function show(re){
+		var imglist = re;
+		var bitmap = new LBitmapData(imglist["hzdz"]);
+		var hz = new LBitmap(bitmap);
+		var laye = new LSprite();
+		addChild(laye);
+		var list = LGlobal.divideCoordinate(1245,544,4,5);
+		anima = new LAnimation(laye,bitmap,list);
+		anima.addEventListener(LEvent.ENTER_FRAME,onframe);
+		anima.addEventListener(LEvent.COMPLETE,move);
+	}
+	function onframe(){
+		anima.onframe();
+	}
+	function move(){
+		if(i<=4){
+			anima.setAction(i++,0,1,false);
+		}else{
+			i=0;
+			anima.setAction(i++,0,1,false);
+		}
+	}
+</script>
+</html>

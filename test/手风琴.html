@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		.box{
+			width:300px;
+			list-style: none;
+			margin:30px auto;
+			overflow: hidden;
+		}
+		.box li p{
+			font-size: 30px;
+			line-height: 30px;
+			font-weight: bold;
+			color:red;
+			cursor: pointer;
+			background: #eee;
+			border:1px solid #ccc;
+			border-bottom: 0;
+			border-top: 0;
+		}
+		.box li:first-of-type p{
+			border-top:1px solid #ccc; 
+		}
+		.box li:last-of-type p{
+			border-bottom:1px solid #ccc; 
+		}
+		.box li div{
+			display: none;
+			border: 1px solid #ccc;
+			border-top: 0;
+		}
+		.box li div.active{
+			display: block;
+		}
+		.box h1{
+			color: #f90;
+		}
+		.box h2{
+			color:#f32;
+		}
+		.box h3{
+			color:#C28;
+		}
+		.box h4{
+			color:green;
+		}
+		.box li:first-of-type div{
+			background: url(cle.jpg)center center ;
+		}
+		.box li:nth-of-type(2) div{
+			background: url(sas.jpg)center center ;
+		}
+		.box li:last-of-type div{
+			background: url(gsw.jpg)center center ;
+		}
+	</style>
+</head>
+<body>
+	<ul class="box">
+		<li>
+			<p>CLE</p>
+			<div class="active">
+				<h1>LeBron James</h1>
+				<h2>Kyrie Irving</h2>
+				<h3>Kevin Love</h3>
+				<h4>JR Smith</h4>
+			</div>
+		</li>
+		<li>
+			<p>SAS</p>
+			<div>
+				<h1>Kawhi Leonard</h1>
+				<h2>LaMarcus Aldridge</h2>
+				<h3>Manu Ginobilli</h3>
+				<h4>Tony Parker</h4>
+			</div>
+		</li>
+		<li>
+			<p>GSW</p>
+			<div>
+				<h1>Stephen Curry</h1>
+				<h2>Kevin Durant</h2>
+				<h3>Klay Thompson</h3>
+				<h4>Draymond Green</h4>
+			</div>
+		</li>
+		<li>
+			<p>BOS</p>
+			<div>
+				<h1>Paul Pierce</h1>
+				<h2>Kevin Garnnet</h2>
+				<h3>Ray Allen</h3>
+				<h4>Rajon Rondo</h4>
+			</div>
+		</li>
+		<li>
+			<p>HOU</p>
+			<div>
+				<h1>Yao Ming</h1>
+				<h2>James Harden</h2>
+			</div>
+		</li>
+		<li>
+			<p>GSW</p>
+			<div>
+				<h1>Stephen Curry</h1>
+				<h2>Kevin Durant</h2>
+				<h3>Klay Thompson</h3>
+				<h4>Draymond Green</h4>
+			</div>
+		</li>
+	</ul>
+</body>
+<script>
+	var p = document.querySelectorAll(".box li p");
+	var div = document.querySelectorAll(".box li div");
+	for(var i=0;i<p.length;i++){
+		p[i].index = i;
+		p[i].onmouseover = function(){
+			for(var j=0;j<p.length;j++){
+				div[j].className = "";
+			}
+			div[this.index].className = "active";
+		}
+	}
+</script>
+</html>

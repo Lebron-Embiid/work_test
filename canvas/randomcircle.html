@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="border:1px solid #000"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 1300;
+	canvas.height = 600;
+
+	function getRandom(){
+		var x = Math.floor(Math.random()*1300);
+		var y = Math.floor(Math.random()*600);
+		var r = Math.floor(Math.random()*80);
+		var red = parseInt(Math.floor(Math.random()*255));
+		var green = parseInt(Math.floor(Math.random()*255));
+		var blue = parseInt(Math.floor(Math.random()*255));
+		var o = parseFloat(Math.random()*1);
+		return {"x":x,"y":y,"r":r,"red":red,"green":green,"blue":blue,"o":o};
+	}
+	function draw(){
+		ctx.beginPath();
+		ctx.fillStyle = "rgba("+getRandom().red+","+getRandom().green+","+getRandom().blue+","+getRandom().o+")";
+		var x = getRandom().x;
+		var y = getRandom().y;
+		ctx.arc(x,y,getRandom().r,0,2*Math.PI);
+		ctx.fill();
+		window.setTimeout(draw,1000);
+	}
+	draw();
+
+</script>
+</html>

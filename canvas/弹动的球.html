@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="border:1px solid red"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	canvas.width = 800;
+	canvas.height = 400;
+	var T;//2.定时器标志
+	var running = false;//5.自动运动标志
+
+	var ball = {    //1.定义球的对象
+		x:100,      //1.初始化球的横坐标
+		y:100,      //1.初始化球的纵坐标
+		r:30,       //1.球的半径
+		vx:4,       //2.球每一帧移动的横坐标
+		vy:2,       //2.球每一帧移动的纵坐标
+		color:'blue',//1.球的颜色
+		draw:function(){  //1.绘制球的方法
+			ctx.beginPath();
+		    ctx.arc(this.x, this.y, this.r, 0, Math.PI*2, true);
+		    ctx.closePath();
+		    ctx.fillStyle = this.color;
+		    ctx.fill();
+		}
+	};
+	function tail(){   //4.尾巴效果
+		ctx.fillStyle = 'rgba(255,255,255,0.3)';
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+	}
+
+	function play(){ //2.自动绘制球
+		//ctx.clearRect(0,0,canvas.width,canvas.height);
+		tail();//4.使用尾巴效果
+		ball.draw();
+		ball.x += ball.vx;
+		ball.y += ball.vy;
+		if(ball.x+ball.vx+ball.r>canvas.width||ball.x+ball.vx-ball.r<=0){//3.检测横坐标
+			ball.vx = -ball.vx;//3.翻转偏移量
+		}
+		if(ball.y+ball.vy+ball.r>canvas.height||ball.y+ball.vy-ball.r<=0){//3.检测纵坐标
+			ball.vy = -ball.vy;//3.翻转偏移量
+		}
+		T = window.requestAnimationFrame(play);
+	}
+	canvas.addEventListener('mousemove',function(e){ 
+		if(!running){ //判断是否自动运动
+			tail();
+			ball.x = e.clientX;
+			ball.y = e.clientY;
+			//处理小球跟随鼠标移动时超出边界的情况
+			if(e.clientX+ball.r>=canvas.width){
+				ball.x = canvas.width - ball.r;
+			}
+			if(e.clientX-ball.r<=0){
+				ball.x = ball.r;
+			}
+			if(e.clientY+ball.r>=canvas.height){
+				ball.y = canvas.height - ball.r;
+			}
+			if(e.clientY-ball.r<=0){
+				ball.y = ball.r;
+			}			
+			ball.draw();
+		}
+	});
+	//2.鼠标移出，球停止运动
+	canvas.addEventListener('mouseout',function(e){ 
+		window.cancelAnimationFrame(T);
+		running = false;
+	});
+
+	//5.监听鼠标点击事件
+	canvas.addEventListener('click',function(e){ 
+		if(!running){//判断是否自动运动
+			T = window.requestAnimationFrame(play);
+			running = true;
+		}
+	});
+
+
+	ball.draw();//1.绘制球
+
+</script>
+</html>

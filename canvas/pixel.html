@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<canvas id="scanvas"></canvas>
+	<div id="color" style="width:500px;height: 100px;"></div>
+	<input type="text" id="text">
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var scanvas = document.getElementById("scanvas");
+	var color = document.getElementById("color");
+	var text = document.getElementById("text");
+	var ctx = canvas.getContext("2d");
+	var sctx = scanvas.getContext("2d");
+	canvas.width = 500;
+	canvas.height = 320;
+	scanvas.width = 500;
+	scanvas.height = 320;
+
+	var img = new Image();
+	img.src = "tab5.jpg";
+	img.onload = function(){
+		ctx.drawImage(img,0,0,canvas.width,canvas.height);
+	}
+	canvas.onmousemove = function(e){
+		var x = e.layerX;
+		var y = e.layerY;
+		var pixel = ctx.getImageData(x,y,1,1);
+		var rgba = "rgba("+pixel.data[0]+","+pixel.data[1]+","+pixel.data[2]+","+pixel.data[3]+")";
+		// console.log(rgba)
+		color.style.background = rgba;
+		text.value = rgba;
+	}
+	canvas.onclick = function(){
+		// var cdata = ctx.createImageData(100,100);
+		// for(var i=0;i<cdata.data.length;i+=4){
+		// 	cdata.data[i+0] = 255;
+		// 	cdata.data[i+1] = 255;
+		// 	cdata.data[i+2] = 255;
+		// 	cdata.data[i+3] = 150;
+		// }
+		// ctx.putImageData(cdata,0,0);
+		var imgdata = ctx.getImageData(0,0,canvas.width,canvas.height);
+		var pixel = imgdata.data;
+		for(var i=0;i<canvas.width*canvas.height;i++){
+			var r = pixel[i*4+0];
+			var g = pixel[i*4+1];
+			var b = pixel[i*4+2];
+			var a = pixel[i*4+3];
+			var gray = r*0.3+g*0.9+b*0.11;
+			// if(gray> 255/2){
+			// 	c=255;
+			// }else{
+			// 	c=0;
+			// }
+			pixel[i*4+0] = gray;
+			pixel[i*4+1] = gray;
+			pixel[i*4+2] = gray;
+			pixel[i*4+3] = gray;
+			// pixel[i*4+0] = 255-r;
+			// pixel[i*4+1] = 255-g;
+			// pixel[i*4+2] = 255-b;
+		}
+		sctx.putImageData(imgdata,0,0,0,0,scanvas.width,scanvas.height);
+	}
+</script>
+</html>

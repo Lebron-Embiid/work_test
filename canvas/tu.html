@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 800;
+	canvas.height = 600;
+
+	ctx.beginPath();
+	ctx.fillStyle = "#AA7B41";
+	ctx.strokeStyle = "#80BBD4";
+	ctx.fillRect(100,100,400,400);
+	ctx.fill();
+	ctx.stroke();
+
+
+	// ctx.beginPath();
+	// ctx.fillStyle = "#AA7B41";
+	// ctx.strokeStyle = "#80BBD4";
+	// ctx.moveTo(90,90);
+	// ctx.lineTo(510,90);
+	// ctx.lineTo(510,510);
+	// ctx.lineTo(90,510);
+	// ctx.lineJoin = "round";
+	// ctx.lineWidth = 1;
+	// ctx.closePath();
+	// ctx.fill();
+	// ctx.stroke();
+	ctx.beginPath();
+	ctx.fillStyle = "#AA7B41";
+	ctx.strokeStyle = "#80BBD4";
+	ctx.moveTo(97,97);
+	ctx.lineTo(513,97);
+	ctx.lineTo(513,513);
+	ctx.lineTo(97,513);
+	ctx.lineJoin = "round";
+	ctx.lineWidth = 6;
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+
+	ctx.beginPath();
+	ctx.fillStyle = "#AA7B41";
+	ctx.strokeStyle = "#AA7B41";
+	ctx.moveTo(100,100);
+	ctx.lineTo(510,100);
+	ctx.lineTo(510,510);
+	ctx.lineTo(100,510);
+	ctx.lineJoin = "round";
+	ctx.lineWidth = 10;
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+
+		var	a=-100;
+		var	b=-100;
+		var	c=-100;
+		var	d=-100;
+		for(var i=0;i<4;i++){
+			a+=100;
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.fillRect(120,120+a,75,75);
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.lineWidth = 5;
+			ctx.lineJoin = "round";
+			ctx.moveTo(113,113+a);
+			ctx.lineTo(113,197+a);
+			ctx.lineTo(197,197+a);
+			ctx.lineTo(197,113+a);
+			ctx.closePath()
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#CCBFB4";
+			ctx.lineWidth = 15;
+			ctx.lineJoin = "round";
+			ctx.moveTo(120,120+a);
+			ctx.lineTo(120,190+a);
+			ctx.lineTo(190,190+a);
+			ctx.lineTo(190,120+a);
+			ctx.closePath()
+			ctx.fill();
+			ctx.stroke();
+		}
+		for(var i=0;i<4;i++){
+			b+=100;
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.fillRect(220,120+b,75,75);
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.lineWidth = 5;
+			ctx.lineJoin = "round";
+			ctx.moveTo(213,113+b);
+			ctx.lineTo(213,197+b);
+			ctx.lineTo(297,197+b);
+			ctx.lineTo(297,113+b);
+			ctx.closePath()
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#CCBFB4";
+			ctx.lineWidth = 15;
+			ctx.lineJoin = "round";
+			ctx.moveTo(220,120+b);
+			ctx.lineTo(220,190+b);
+			ctx.lineTo(290,190+b);
+			ctx.lineTo(290,120+b);
+			ctx.closePath()
+			ctx.fill();
+			ctx.stroke();
+		}
+
+		for(var i=0;i<4;i++){
+			c+=100;
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.fillRect(320,120+c,75,75);
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.lineWidth = 5;
+			ctx.lineJoin = "round";
+			ctx.moveTo(313,113+c);
+			ctx.lineTo(313,197+c);
+			ctx.lineTo(397,197+c);
+			ctx.lineTo(397,113+c);
+			ctx.closePath()
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#CCBFB4";
+			ctx.lineWidth = 15;
+			ctx.lineJoin = "round";
+			ctx.moveTo(320,120+c);
+			ctx.lineTo(320,190+c);
+			ctx.lineTo(390,190+c);
+			ctx.lineTo(390,120+c);
+			ctx.closePath()
+			ctx.fill();
+			ctx.stroke();
+		}
+		for(var i=0;i<4;i++){
+			d+=100;
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.fillRect(420,120+d,75,75);
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#80BBD4";
+			ctx.lineWidth = 5;
+			ctx.lineJoin = "round";
+			ctx.moveTo(413,113+d);
+			ctx.lineTo(413,197+d);
+			ctx.lineTo(497,197+d);
+			ctx.lineTo(497,113+d);
+			ctx.closePath()
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#CCBFB4";
+			ctx.strokeStyle = "#CCBFB4";
+			ctx.lineWidth = 15;
+			ctx.lineJoin = "round";
+			ctx.moveTo(420,120+d);
+			ctx.lineTo(420,190+d);
+			ctx.lineTo(490,190+d);
+			ctx.lineTo(490,120+d);
+			ctx.closePath()
+			ctx.fill();
+			ctx.stroke();
+		}
+</script>
+</html>

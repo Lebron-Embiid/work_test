@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext("2d");
+	canvas.width = 500;
+	canvas.height = 500;
+
+	ctx.beginPath();
+	ctx.rect(50,50,300,300);
+	ctx.moveTo(110,300);
+	ctx.lineTo(210,300);
+	ctx.lineTo(160,250);
+
+	ctx.moveTo(100,100);
+	ctx.lineTo(100,200);
+	ctx.lineTo(300,200);
+	ctx.lineTo(300,100);
+	ctx.lineTo(100,100);
+	
+	ctx.arc(260,270,30,0,2*Math.PI,true);
+	ctx.closePath();
+
+	ctx.fillStyle = "#6481B9";
+	ctx.shadowColor = "gray";
+	ctx.shadowOffsetX = 10;
+	ctx.shadowOffsetY = 10;
+	ctx.shadowBlur = 10;
+	ctx.fill();
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// var arr = ['国防部驳美防长指责中国言论','视频记录郭川失联前最后影像','小伙占爱心专座拒给孕妇让座','家长着警服持警棍闯学校打人','女子强行闯关一巴掌打聋安检','目击者讲述砸运钞车被毙过程','监拍18岁快递小哥遭壮汉暴打','县委书记当众训斥多名局长','视频记录郭川失联前最后影像'];
+	// document.write("<ul>");
+	// for(var i=0;i<arr.length;i++){
+	// 	document.write("<li>"+arr[i]+"</li>");
+	// }
+	// document.write("</ul>");
+
+
+	var time = new Date();
+	var year = time.getFullYear();
+	var month = time.getMonth()+1;
+	var day = time.getDate();
+	var hour = time.getHours();
+	var minute = time.getMinutes();
+	var second = time.getSeconds();
+	function zero(a){
+		if(a < 10){
+			a = "0"+a;
+		}
+		return a;
+	}
+	month = zero(month);
+	day = zero(day);
+	hour = zero(hour);
+	minute = zero(minute);
+	second = zero(second);
+
+	function toStr(n){
+		return n.toString();
+	}
+	var y = toStr(year);
+	var m = toStr(month);
+	var d = toStr(day);
+	var h = toStr(hour);
+	var i = toStr(minute);
+	var s = toStr(second);
+
+	function show(obj,s){
+		for(var i=0;i<s.lenght;i++){
+			return obj = "<img src='"+s[i]+".jpg'/>";
+		}
+	}
+	var Year = show(Year,y);
+	var Month = show(Month,y);
+	var Day = show(Day,y);
+	var Hour = show(Hour,y);
+	var Minute = show(Minute,y);
+	var Second = show(Second,y);
+
+	document.write(Year+"<img src='..jpg'/>"+Month+"<img src='..jpg'/>"+Day+"<img src='..jpg'/>"+Hour+"<img src='..jpg'/>"+Minute+"<img src='..jpg'/>"+Second);
+</script>
+</html>

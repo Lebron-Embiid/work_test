@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.snow{
+			width: 1000px;
+			height: 600px;
+			/*overflow: hidden;*/
+			position: relative;
+			left:-1000px;
+		}
+		.snow img{
+			display: block;
+			width:30px;
+			height: 30px;
+			position: absolute;
+		}
+		.snow img.role{
+			animation: role 3s linear infinite;
+		}
+		/*.snow img.reverse{
+			animation: role 3s linear reverse infinite;
+		}*/
+		@keyframes role{
+			from{
+				transform:rotate(0deg);
+			}
+			to{
+				transform:rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+
+</body>
+<script>
+	document.write("<div class='snow'");
+	for(var i=0;i<100;i++){
+		document.write("<img src='xuehua.jpg'/>");
+	}
+	document.write("</div>");
+
+	var img = document.images;
+	
+	
+	window.onload = function(){
+		for(var i=0;i<img.length;i++){
+			var ran_left = Math.floor(Math.random()*1000);
+			var ran_top = Math.floor(Math.random()*600);
+			var w = Math.floor(Math.random()*img.length);
+			img[i].style.left = ran_left+"px";
+			img[i].style.top = ran_top+"px";
+			img[w].style.width = "20px";
+			img[w].style.height = "20px";
+			img[i].className = "role";
+		}
+		var div = document.querySelector(".snow");
+		var n = 0;
+		var timer;
+		function toright(){
+			clearInterval(timer);
+			n++;
+			div.style.left = -1000+n+"px";
+			var s = parseInt(Math.random()*100);
+			for(var i=0;i<img.length;i++){
+				if(s%3 == 0){
+					img[i].style.top = parseInt(img[i].style.top)+1+"px";
+				}else{
+					img[i].style.top = parseInt(img[i].style.top)-1+"px";			
+				}
+			}
+			timer = setInterval(toright,50);
+		}
+		toright();
+	}
+</script>
+</html>

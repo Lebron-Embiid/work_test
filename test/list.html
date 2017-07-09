@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding: 0;}
+		.box{
+			width:200px;
+			height: 400px;
+			background: #f60;
+			position: relative;
+			margin:20px;
+			border-right: 10px solid #fff;
+		}
+		.box .div{
+			width:200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			left: 210px;
+			display: none;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="div">
+			
+		</div>
+	</div>
+</body>
+<script>
+	var box = document.querySelector(".box");
+	var div = document.querySelector(".div");
+	box.onmouseover = function(){
+		div.style.display = "block";
+	}
+	box.onmouseout = function(){
+		div.style.display = "none";
+	}
+</script>
+</html>

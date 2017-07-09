@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas">
+		
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas');
+	var cxt = canvas.getContext("2d");
+	canvas.width = 1000;
+	canvas.height = 500;
+
+	cxt.beginPath();
+	cxt.moveTo(50,20);
+	cxt.lineTo(140,70);
+	cxt.lineTo(50,120);
+	cxt.closePath();
+	cxt.strokeStyle = "blue";
+	cxt.fillStyle = "blue";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.moveTo(230,20);
+	cxt.lineTo(140,70);
+	cxt.lineTo(230,120);
+	cxt.closePath();
+	cxt.strokeStyle = "red";
+	cxt.fillStyle = "red";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.moveTo(50,20);
+	cxt.lineTo(140,70);
+	cxt.lineTo(230,20);
+	cxt.closePath();
+	cxt.strokeStyle = "green";
+	cxt.fillStyle = "green";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.moveTo(50,120);
+	cxt.lineTo(230,120);
+	cxt.lineTo(140,71);
+	cxt.closePath();
+	cxt.strokeStyle = "yellow";
+	cxt.fillStyle = "yellow";
+	cxt.stroke();
+	cxt.fill();
+</script>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{ 
+			text-align: center;
+			margin-top: 250px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<canvas id='canvas'></canvas>
+	</div>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var cxt = canvas.getContext("2d");
+	canvas.width = 200;
+	canvas.height = 200;
+	var width=cxt.canvas.width;
+	var height=cxt.canvas.height;
+	var r=width/2;
+
+	cxt.lineWidth = 10;
+	cxt.beginPath();
+	cxt.strokeStyle = "#325FA2";
+	cxt.arc(100,100,r-5,0,6.28);
+	cxt.stroke();
+	cxt.closePath();
+
+
+	// cxt.lineWidth = 3;
+	// cxt.beginPath();
+	// cxt.strokeStyle = "#000";
+	// cxt.setLineDash([2,2]);
+	// cxt.arc(100,100,42,0,6.28);
+	// cxt.stroke();
+	// cxt.closePath();
+
+	// cxt.lineWidth = 10;
+	// cxt.beginPath();
+	// cxt.strokeStyle = "#000";
+	// cxt.setLineDash([2,12]);
+	// cxt.arc(100,100,38,0,6.28);
+	// cxt.stroke();
+	// cxt.closePath();
+	for(var i=0;i<60;i++){
+		var rad=2*Math.PI/60*i;
+		var x=Math.cos(rad)*(r-18);
+		var y=Math.sin(rad)*(r-18);
+		cxt.beginPath();
+		cxt.fillStyle = '#000';
+		cxt.arc(x+100,y+100,2,0,2*Math.PI,false);
+		cxt.fill();
+	}
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(18,100);
+	cxt.lineTo(28,100);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(100,18);
+	cxt.lineTo(100,28);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(170,100);
+	cxt.lineTo(180,100);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(100,170);
+	cxt.lineTo(100,180);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(141,28);
+	cxt.lineTo(136,38);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(28,141);
+	cxt.lineTo(38,136);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(171,141);
+	cxt.lineTo(160,136);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(141,171);
+	cxt.lineTo(136,160);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(170,60);
+	cxt.lineTo(162,66);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(60,170);
+	cxt.lineTo(66,162);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(59,28);
+	cxt.lineTo(64,38);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(28,59);
+	cxt.lineTo(38,64);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 3;
+	cxt.strokeStyle = "#f00";
+	cxt.arc(30,100,4,0,6.28);
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(100,90);
+	cxt.lineTo(100,160);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 6;
+	cxt.strokeStyle = "#000";
+	cxt.moveTo(90,110);
+	cxt.lineTo(120,80);
+	cxt.lineCap = "round";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 4;
+	cxt.strokeStyle = "red";
+	cxt.moveTo(34,100);
+	cxt.lineTo(114,100);
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.lineWidth = 3;
+	cxt.fillStyle = "#f00";
+	cxt.arc(100,100,5,0,6.28);
+	cxt.fill();
+</script>
+</html>

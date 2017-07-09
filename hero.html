@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+	</style>
+	<script src="lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+<script>
+	LInit(50,"div",1000,500,main);
+	var loader;
+	function main(){
+		var loader = new LLoader();
+		loader.addEventListener(LEvent.COMPLETE,loadBit);
+		loader.load("1.png","bitmapData");
+	}
+	var x = 20;
+	var y = 20;
+	function loadBit(e){
+		document.onkeydown = function(e){
+			switch(e.keyCode){
+				case 37:y = y-65;
+						if(y<20){
+							y=20;
+						}
+						init();
+						console.log(y)
+					break;
+				case 38:x = x-65;
+						if(x<20){
+							x=20;
+						}
+						init();
+					console.log(x)
+					break;
+				case 39:y = y+65;
+						if(y>215){
+							y=215;
+						}
+						init();
+						console.log(y)
+					break;
+				case 40:x = x+65;
+						if(x>215){
+							x=215;
+						}
+						init();
+						console.log(x)
+					break;
+			}
+		}
+		function init(){
+			var mapData = new LBitmapData(e.target,x,y,70,68);
+			var bitmap = new LBitmap(mapData);
+			addChild(bitmap);
+		}
+		init();
+		
+	}
+</script>
+</html>

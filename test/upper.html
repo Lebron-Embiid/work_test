@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var mpt = window.prompt("请输入一段英文?");
+	var str = mpt;
+	var str2 = str.split(" ");
+	for(var i=0;i<=str2.length;i++){
+		document.write(str2[i].substr(0,1).toUpperCase());
+		document.write(str2[i].substr(1,str2[i].length).toLowerCase()+"&nbsp;");
+	}
+</script>
+</html>

@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document 78DE2B</title>
+	<style>
+		*{margin:0;padding: 0;}
+		table{width:700px;}
+		form select{
+			display: inline-block;
+			width:100px;
+			height: 30px;
+		}
+		form tr{
+			height: 50px;
+		}
+		form tr td{
+			position: relative;
+			margin-bottom: 30px;
+		}
+		form tr td:first-of-type{
+			display: block;
+			text-align: right;
+			margin:0 20px 0 0;
+			line-height: 50px;
+		}
+		form tr:first-of-type td input[type="text"],form tr td input[type="password"]{
+			display: block;
+			width:300px;
+			height: 32px;
+			border-radius: 5px;
+			border:1px solid green;
+			float: left;
+			outline: none;
+			text-indent: 10px;
+			margin-right: 10px;
+		}
+		form tr td span,p{
+			font-size: 12px;
+			/*color:red;*/
+		}
+		form tr td span{
+			line-height: 32px;
+			/*display: none;*/
+		}
+		form tr:nth-last-of-type(2) td span,form tr:nth-last-of-type(3) td span{
+			display: inline-block;
+		}
+		form tr td div{
+			width:120px;
+			overflow: hidden;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 10px;
+			position: absolute;
+			right: 120px;
+			top: -12px;
+			display: none;
+		}
+		form tr td .font_qq,form tr td .font_agree,p{
+			color:#000;
+		}
+		form tr td .font_qq,form tr td .font_agree{
+			cursor: pointer;
+		}
+		form tr td .code{
+			width:150px;
+			height: 50px;
+			border: 1px solid green;
+			border-radius: 5px;
+			text-indent: 10px;
+			outline: none;
+		}
+		form tr td .submit{
+			display: block;
+			width:160px;
+			height: 40px;
+			background: #86cc67;
+			border: 0;
+			color:#fff;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		form tr:nth-last-of-type(2),form tr:nth-last-of-type(3){
+			height: 30px;
+		}
+		form tr td a{
+			text-decoration: none;
+			color: #4199d7;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<table>
+			<tr>
+				<td>昵称</td>
+				<td>
+					<input type="text" class="username">
+					<span></span>
+				</td>
+			</tr>
+			<tr>
+				<td>密码</td>
+				<td>
+					<input type="password" class="passwd">
+					<div>
+						<p>长度为6-16个字符</p>
+						<p>不能包含空格</p>
+						<p>不能是9位以下纯数字</p>
+					</div>
+					<span></span>
+				</td>
+			</tr>
+			<tr>
+				<td>确认密码</td>
+				<td>
+					<input type="password" class="pw_again">
+					<span></span>
+				</td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>
+					<input type="radio" name="sex" checked="true">男
+					<input type="radio" name="sex">女
+				</td>
+			</tr>
+			<tr>
+				<td>生日</td>
+				<td class="birthday">
+					<select name="" id="">
+						<option value="">公历</option>
+						<option value="">农历</option>
+					</select>
+					<select name="" id="">
+						<option value="">年</option>
+						<option value="">2017</option>
+					</select>
+					<select name="" id="">
+						<option value="">月</option>
+						<option value="">5</option>
+					</select>
+					<select name="" id="">
+						<option value="">日</option>
+						<option value="">23</option>
+					</select>
+					<span class="birth"></span>
+				</td>
+			</tr>
+			<tr class="place">
+				<td>所在地</td>
+				<td>
+					<select name="" id="">
+						<option value="">中国</option>
+						<option value="">美国</option>
+					</select>
+					<select name="" id="">
+						<option value="">广东</option>
+						<option value="">湖北</option>
+					</select>
+					<select name="" id="">
+						<option value="">深圳</option>
+						<option value="">武汉</option>
+					</select>
+					<span class="address"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>验证码</td>
+				<td>
+					<input type="text" class="code">
+					<img src="" alt="">
+					<a href="javascript:(void)">点击换一张</a>
+					<span class="code_word"></span>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="checkbox">
+					<span class="font_qq">同时开通QQ空间</span>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="checkbox">
+					<span class="font_agree">我已阅读并同意</span>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="submit" value="立即注册" class="submit">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+<script>
+	var form = document.forms[0];
+	var username = document.querySelector(".username");
+	var passwd = document.querySelector(".passwd");
+	var pw_again = document.querySelector(".pw_again");
+	var code = document.querySelector(".code");
+	var code_word = document.querySelector(".code_word");
+	var submit_btn = document.querySelector(".submit");
+	var font_qq = form.querySelector(".font_qq");
+	var font_agree = form.querySelector(".font_agree");
+	var select1 = form.querySelectorAll(".birthday select");
+	var birth = form.querySelector(".birth");
+	var birthday = form.querySelector(".birthday");
+	var select2 = form.querySelectorAll(".place select");
+	var address = form.querySelector(".address");
+	var n=1;
+	var m=1;
+	username.onfocus = function(){
+		if(this.value == ""){
+			this.nextSibling.nextSibling.innerHTML = "请输入昵称";
+			this.nextSibling.nextSibling.style.color = "black";
+		}
+	}
+	username.onblur = function(){
+		if(this.value == ""){
+			this.nextSibling.nextSibling.innerHTML = "昵称不可以为空";
+			this.nextSibling.nextSibling.style.color = "red";
+		}else{
+			this.nextSibling.nextSibling.innerHTML = "OK";
+			this.nextSibling.nextSibling.style.color = "green";
+		}
+	}
+	passwd.onfocus = function(){
+		if(this.value == ""){
+			this.nextSibling.nextSibling.style.display = "block";
+			this.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML = "";
+		}
+	}
+	passwd.onblur = function(){
+		if(this.value == ""){
+			this.nextSibling.nextSibling.style.display = "none";
+			this.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML = "请输入密码";
+			this.nextSibling.nextSibling.nextSibling.nextSibling.style.color = "red";
+		}else{
+			this.nextSibling.nextSibling.style.display = "none";
+			this.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML = "OK";
+			this.nextSibling.nextSibling.nextSibling.nextSibling.style.color = "green";
+		}
+	}
+	pw_again.onfocus = function(){
+		if(this.value == ""){
+			this.nextSibling.nextSibling.innerHTML = "请再次输入密码";
+			this.nextSibling.nextSibling.style.color = "black";
+		}
+	}
+	pw_again.onblur = function(){
+		if(this.value == ""){
+			this.nextSibling.nextSibling.innerHTML = "密码不能为空";
+			this.nextSibling.nextSibling.style.color = "red";
+		}else{
+			this.nextSibling.nextSibling.innerHTML = "OK";
+			this.nextSibling.nextSibling.style.color = "green";
+		}
+	}
+	for(var i=1;i<select1.length;i++){
+		select1[i].index = i;
+		select1[i].onchange = function(){
+				birth.innerHTML = "";
+		}
+		select1[i].onblur = function(){
+			if(select1[1].childNodes[1].selected == true || select1[2].childNodes[1].selected == true || select1[3].childNodes[1].selected == true){
+				select1[1].style.borderColor = "red";
+				select1[2].style.borderColor = "red";
+				select1[3].style.borderColor = "red";
+				birth.innerHTML = "请输入生日";
+				birth.style.color = "red";
+			}else{
+				select1[1].style.borderColor = "";
+				select1[2].style.borderColor = "";
+				select1[3].style.borderColor = "";
+				birth.innerHTML = "OK";
+				birth.style.color = "green";
+			}
+		}
+		birthday.onblur = function(){
+			if(select1[i].childNodes[1].selected == false){
+				select1[i].style.borderColor = "";
+				for(var j=0;j<select1.length;j++){
+					if(select1[j].childNodes[1].selected == false){
+						birth.innerHTML = "OK";
+						birth.style.color = "green";
+					}
+				}
+			}
+		}
+	}
+	for(var i=0;i<select2.length;i++){
+		select2[i].onblur = function(){
+				address.innerHTML = "OK";
+				address.style.color = "green";
+		}
+	}
+	code.onfocus = function(){
+		if(this.value == ""){
+			code_word.innerHTML = "请输入验证码";
+			code_word.style.color = "";
+		}
+	}
+	code.onblur = function(){
+		if(this.value == ""){
+			code_word.innerHTML = "验证码不能为空";
+			code_word.style.color = "red";
+		}else{
+			code_word.innerHTML = "OK";
+			code_word.style.color = "green";
+		}
+	}
+	function agree_font(obj,e){
+		obj.onclick = function(){
+			if(e==1){
+				this.previousSibling.previousSibling.checked = true;
+				e=0;
+			}else{
+				this.previousSibling.previousSibling.checked = false;
+				e=1;
+			}
+		}
+	}
+	agree_font(font_qq,n);
+	agree_font(font_agree,n);
+	form.onsubmit = function(){
+		if(username.value == ""){
+			username.nextSibling.nextSibling.innerHTML = "昵称不可以为空";
+			username.nextSibling.nextSibling.style.color = "red";
+		}
+		if(passwd.value == ""){
+			passwd.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML = "密码不能为空";
+			passwd.nextSibling.nextSibling.nextSibling.nextSibling.style.color = "red";
+		}
+		if(pw_again.value == ""){
+			pw_again.nextSibling.nextSibling.innerHTML = "密码不能为空";
+			pw_again.nextSibling.nextSibling.style.color = "red";
+		}
+		if(code.value == ""){
+			code_word.innerHTML = "验证码不能为空";
+			code_word.style.color = "red";
+		}
+		for(var i=1;i<select1.length;i++){
+			if(select1[1].childNodes[1].selected == true || select1[2].childNodes[1].selected == true || select1[3].childNodes[1].selected == true){
+				select1[1].style.borderColor = "red";
+				select1[2].style.borderColor = "red";
+				select1[3].style.borderColor = "red";
+				birth.innerHTML = "请输入生日";
+				birth.style.color = "red";
+			}
+		}
+		if(font_qq.previousSibling.previousSibling.checked == true && font_agree.previousSibling.previousSibling.checked == true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
+</html>

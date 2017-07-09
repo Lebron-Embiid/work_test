@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding: 0;}
+		div{
+			width:50px;
+			height: 50px;
+			background: red;
+			float: left;
+			margin: 10px;
+			position: relative;
+		}
+		div.active{
+			animation: move 0.5s linear forwards;
+		}
+		div:first-of-type{
+			margin-left:20px;
+			animation-delay:0.1s;
+		}
+		div:nth-of-type(2){
+			animation-delay:0.2s;
+		}
+		div:nth-of-type(3){
+			animation-delay:0.3s;
+		}
+		div:nth-of-type(4){
+			animation-delay:0.4s;
+		}
+		div:nth-of-type(5){
+			animation-delay:0.5s;
+		}
+		div:nth-of-type(6){
+			animation-delay:0.6s;
+		}
+		div:nth-of-type(7){
+			animation-delay:0.7s;
+		}
+		div:nth-of-type(8){
+			animation-delay:0.8s;
+		}
+		div:nth-of-type(9){
+			animation-delay:0.9s;
+		}
+		div:nth-of-type(10){
+			animation-delay:1s;
+		}
+		div:nth-of-type(11){
+			animation-delay:1.1s;
+		}
+		div:nth-of-type(12){
+			animation-delay:1.2s;
+		}
+		div:nth-of-type(13){
+			animation-delay:1.3s;
+		}
+		div:nth-of-type(14){
+			animation-delay:1.4s;
+		}
+		div:nth-of-type(15){
+			animation-delay:1.5s;
+		}
+		div:nth-of-type(16){
+			animation-delay:1.6s;
+		}
+		div:nth-of-type(17){
+			animation-delay:1.7s;
+		}
+		div:nth-of-type(18){
+			animation-delay:1.8s;
+		}
+		div:nth-of-type(19){
+			animation-delay:1.9s;
+		}
+		@keyframes move{
+			from{
+				top:0;
+			}to{
+				top:400px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	var div = document.getElementsByTagName("div");
+	// alert(div.length)
+
+	document.onclick = function(){
+		for(var i=0;i<div.length;i++){
+			div[i].className = "active";
+		}
+	}
+</script>
+</html>

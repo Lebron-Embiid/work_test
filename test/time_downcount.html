@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="p"></p>
+
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+	<img src="" alt="">
+</body>
+<script>
+	function show(){
+		var p = document.getElementById("p");
+		var time = new Date(2017,4,19,12,40);
+		var now = new Date();
+		var new_date = Math.floor((time-now)/1000);
+		// p.innerHTML = Math.floor((new_date/86400))+"天"+Math.floor((new_date%86400/3600))+"时"+Math.floor((new_date%86400%3600/60))+"分"+Math.floor((new_date%60))+"秒";
+		p.innerHTML = "距离吃饭时间还有:"+Math.floor((new_date/3600/24))+"天"+Math.floor((new_date/3600%24))+"时"+Math.floor((new_date/60%60))+"分"+Math.floor((new_date%60))+"秒";
+	}
+	var timer = setInterval(show,1000);
+	show();
+
+
+
+
+	// function timeover(){
+	// 	var date = new Date();
+	// 	var New = new Date(2017,5,1,0,0);  		//获取倒计时的未来时间
+	// 	var day = Math.floor((New-date)/1000);	//获取倒计时的秒数
+	// 	// var time = "距离明天还剩 "+Math.floor(day/86400)+"天"+Math.floor(day%86400/3600)+"小时"+Math.floor(day%86400%3600/60)+"分钟"+Math.floor(day%60)+"秒";
+	// 	var time = Math.floor(day/86400)+"."+Math.floor(day%86400/3600)+"."+Math.floor(day%86400%3600/60)+"."+Math.floor(day%60);
+	// 	//图片时间
+	// 	var img = document.images;
+	// 	for(var i=0;i<time.length;i++){
+	// 		img[i].src = time[i]+".jpg";
+	// 	}
+	// 	var p = document.getElementById("p");
+	// 	p.innerHTML = time;
+	// }
+	// setInterval(timeover,1000);
+	// timeover();
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="p"></p>
+</body>
+<script>
+	var num = 5;
+	function show(){
+		var p = document.getElementById("p");
+		p.innerHTML = num;
+		num--;
+		if(num == -1){
+			clearInterval(timer);
+			window.location.href = "http://www.baidu.com";
+		}
+	}
+	var timer = setInterval(show,1000);
+	show();
+</script>
+</html>

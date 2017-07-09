@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			position: relative;
+		}
+		#box #cover{
+			position: absolute;
+			width:1350px;
+			height: 600px;
+			left: 0;
+			top: 0;
+			background: rgba(0,0,0,.5);
+			display: none;
+		}
+		#div{
+			width:100px;
+			height: 100px;
+			background: green;
+			border:3px solid #000;
+		}
+		#change{
+			width:300px;
+			height: 200px;
+			border:10px solid #ccc;
+			background: #fff;
+			position: absolute;
+			z-index: 2;
+			left: 40%;
+			top:30%;
+			display: none;
+		}
+		h3{float: left;}
+		ul{
+			float: left;
+		}
+		ul li{
+			list-style: none;
+			float: left;
+			width:20px;
+			height: 20px;
+			border: 1px solid #999;
+			margin-right: 10px;
+			color:#fff;
+			text-align: center;
+			cursor: pointer;
+		}
+		.clear{
+			clear:both;
+		}
+		#width li,#height li{
+			color:#000;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<h2>请为下面的DIV设置样式:<button id="btn">点击设置</button></h2>
+		<div id="div"></div>
+		<div id="cover"></div>
+	</div>
+	<div id="change">
+		<h3>
+			请选择背景色:
+		</h3>
+			<ul id="bgcolor">
+				<li style="background: red;">红</li>
+				<li style="background: yellow;">黄</li>
+				<li style="background: blue;">蓝</li>
+			</ul>
+		<div class="clear"></div>
+		<h3>
+			请选择宽(px):
+		</h3>
+			<ul id="width">
+				<li>200</li>
+				<li>300</li>
+				<li>400</li>
+			</ul>
+		<div class="clear"></div>
+		<h3>
+			请选择高(px):
+		</h3>
+		<ul id="height">
+			<li>200</li>
+			<li>300</li>
+			<li>400</li>
+		</ul>
+		<div class="clear"></div>
+		<input type="button" value="恢复" id="btn_off">
+		<input type="button" value="确定" id="btn_ok">
+	</div>
+
+</body>
+<script>
+	var box = document.getElementById("box");
+	var div = document.getElementById("div");
+	var btn = document.getElementById("btn");
+	var change = document.getElementById("change");
+	var cover = document.getElementById("cover");
+	var btn_ok = document.getElementById("btn_ok");
+	var btn_off = document.getElementById("btn_off");
+	var bgcolor = document.getElementById("bgcolor");
+	var width = document.getElementById("width");
+	var height = document.getElementById("height");
+	var bg_li = bgcolor.getElementsByTagName("li");
+	var w_li = width.getElementsByTagName("li");
+	var h_li = height.getElementsByTagName("li");
+	btn.onclick = function(){
+		change.style.display = "block";
+		cover.style.display = "block";
+		for(var i=0;i<bg_li.length;i++){
+			bg_li[i].onclick = function(){
+				div.style.background = this.style.background;
+			}
+			w_li[i].onclick = function(){
+				div.style.width = this.innerHTML+"px";
+			}
+			h_li[i].onclick = function(){
+				div.style.height = this.innerHTML+"px";
+			}
+		}
+	}
+	btn_ok.onclick = close;
+	function close(){
+		change.style.display = "none";
+		cover.style.display = "none";
+	}
+	btn_off.onclick = function(){
+		div.style.width = "100px";
+		div.style.height = "100px";
+		div.style.background = "green";
+		close();
+	}
+</script>
+</html>

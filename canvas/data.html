@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+		var canvas=document.getElementById("canvas");
+		var context=canvas.getContext("2d");
+		canvas.width="1000";
+		canvas.height="600"
+		var data={
+			setname:[
+				{
+					data:[50,88,126,162,198,236,273]
+				},
+				{
+					data:[50,75,98,121,144,168,191]
+				}
+			],
+			dataX:["一","二","三","四","五","六","七"],
+			dataY:["300","250","200","150","100","50","0"]
+		}
+		context.beginPath();
+		var xl=data.dataX.length;
+		context.moveTo(100,100);
+		context.lineTo(100,400);
+		context.strokeStyle="#000"
+		context.lineTo(100+80*xl,400);
+		context.stroke();
+		for(var i=0;i<xl;i++){
+			context.moveTo(100+80*i,400);
+			context.lineTo(100+80*i,405);
+			context.stroke();
+			context.fillText(data.dataX[i],136+80*i,415);
+		}
+		for(var k=0;k<data.dataY.length;k++){
+			context.textAlign="right";
+			context.fillText(data.dataY[k],90,100+50*k)
+		}
+		var d=[];
+		d[0]=[];
+		d[1]=[];
+		var f=[];
+		f[0]=[];
+		f[1]=[];
+		for(var i=0;i<xl;i++){
+			//速度
+			d[0][i]=(data.setname[0].data[i]-50)/20;// d[0][6]:3
+			d[1][i]=(data.setname[1].data[i]-50)/20;
+			//坐标
+			f[0][i]=0;
+			f[1][i]=0;
+		}
+		var num1=0;
+		function a(){
+			if(num1>=19){
+				clearInterval(a)
+			}
+			for(var i=0;i<xl-1;i++){
+				if(i%2==0){
+					context.fillStyle="#fff"
+				}else{
+					context.fillStyle="#fff"
+				}
+				context.fillRect(100,100+50*i,560,50)
+			}
+			context.save();
+			context.translate(100,400);
+			for(var m=0;m<xl;m++){
+				f[0][m]+=d[0][m];// d[0][m]0~3
+				f[1][m]+=d[1][m];
+			}
+			for(j=1;j<xl;j++){
+				context.beginPath();
+				context.moveTo(40+80*(j-1),-f[0][j-1]); //f[0][m]:50~53,50~56....50~110
+				context.lineTo(40+80*j,-f[0][j]);
+				context.stroke();
+				context.beginPath();
+				context.moveTo(40+80*(j-1),-f[1][j-1]);
+				context.lineTo(40+80*j,-f[1][j]);
+				context.stroke();
+			}
+			context.restore();
+			num1++;
+		}
+		a();
+		var a=setInterval(a,100)
+	</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lufylegend</title>
+	<script src="lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+<script>
+	// LInit(50,"div",1000,600,main);
+	// var loader;
+	// function main(){
+	// 	loader = new LLoader();
+	// 	loader.addEventListener(LEvent.COMPLETE,loadBitmapdata);
+	// 	loader.load("3.jpg","bitmapData");
+	// }
+	// function loadBitmapdata(e){
+	// 	for(let i=0;i<10;i++){
+	// 		var mapData = new LBitmapData(e.target);
+	// 		var bitmap = new LBitmap(mapData);
+	// 		bitmap.x = 20*i;
+	// 		bitmap.y = 20*i;
+	// 		bitmap.alpha = 0.1*i;
+	// 		bitmap.rotate = 10*i;
+	// 		addChild(bitmap);
+	// 	}
+	// }
+
+
+	LInit(50,"div",1000,600,main);
+	var loadlist;
+	var backlayer,playlaye; 
+	var loadData = [
+		{name:"p1",path:"1.png"},
+		{name:"p2",path:"ball.jpg"}
+	]
+	function main(){
+		LLoadManage.load(loadData,"",show);
+	}
+	function show(re){
+		loadlist = re;
+		backlayer = new LSprite();
+		addChild(backlayer);
+		addBack();
+		addPlayer();
+	}
+	function addBack(){
+		var bit = new LBitmapData(loadlist["p2"]);
+		var bitmap = new LBitmap(bit);
+		backlayer.addChild(bitmap);
+	}
+	function addPlayer(){
+		playlaye = new LSprite();
+		backlayer.addChild(playlaye);
+		var hero = new Player();
+	}
+	function Player(){
+		base(this,LSprite,[]);
+		var data = new LBitmapData(loadlist["p1"],0,0,64,64);
+		var bitmap = new LBitmap(data);
+		playlaye.addChild(bitmap);
+	}
+
+	// LInit(50,"div",800,500,main);
+	// var loader;
+	// function main(){
+	// 	loader = new LLoader();
+	// 	loader.addEventListener(LEvent.COMPLETE,show);
+	// 	loader.load("1.png","bitmapData");
+	// }
+	// function show(){
+	// 	var bitmap = new LBitmapData(loader.content);
+	// 	var sprite = new LSprite();
+	// 	addChild(sprite);
+	// 	sprite.graphics.beginBitmapFill(bitmap);
+	// 	sprite.graphics.drawArc(5,"green",[150,150,150,0,2*Math.PI,false],true,"red");
+	// 	// sprite.graphics.drawRoundRect(5,"red",[300,100,100,100,10],false);
+	// }
+
+
+	// LInit(50,"div",800,500,main);
+	// function main(){
+	// 	var layer = new LSprite();
+	// 	addChild(layer);
+	// 	var feild = new LTextField();
+	// 	feild.text = "1";
+	// 	feild.x = 100;
+	// 	feild.y = 50;
+	// 	layer.addChild(feild);
+	// 	layer.addEventListener(LMouseEvent.MOUSE_DOWN,keydown);
+	// }
+	// function keydown(e){
+	// 	alert(1)
+	// }
+	
+</script>
+</html>

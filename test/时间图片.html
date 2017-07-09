@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{display: block;width:50px;height: 50px;float: left;}
+	</style>
+</head>
+<body>
+	<p id="p"></p>
+	<input type="button" value="stop" id="stop">
+	<input type="button" value="start" id="start">
+</body>
+<script>
+	function show_date(){
+		var p = document.getElementById("p");
+		var time = new Date();
+		var year = time.getFullYear();
+		var month = time.getMonth()+1;
+		var day = time.getDate();
+		var hour = time.getHours();
+		var minute = time.getMinutes();
+		var second = time.getSeconds();
+		function zero(a){
+			if(a < 10){
+				a = "0"+a;
+			}
+			return a;
+		}
+		month = zero(month);
+		day = zero(day);
+		hour = zero(hour);
+		minute = zero(minute);
+		second = zero(second);
+
+		function toStr(n){
+			return n.toString();
+		}
+		var y = toStr(year);
+		var m = toStr(month);
+		var d = toStr(day);
+		var h = toStr(hour);
+		var i = toStr(minute);
+		var s = toStr(second);
+
+		function show(obj,n){
+			var obj="";
+			for(var i=0;i<n.length;i++){
+				obj += "<img src='"+n[i]+".jpg'/>";
+			}
+			return obj;
+		}
+		var Year = show(Year,y);
+		var Month = show(Month,m);
+		var Day = show(Day,d);
+		var Hour = show(Hour,h);
+		var Minute = show(Minute,i);
+		var Second = show(Second,s);
+		var img = "<img src='..jpg'/>";
+		p.innerHTML = Year+img+Month+img+Day+img+Hour+img+Minute+img+Second;
+	}
+	var timer = setInterval(show_date,1000);
+	show_date();
+
+
+	var stop = document.getElementById("stop");
+	var start = document.getElementById("start");
+	stop.onclick = function(){
+		clearInterval(timer);
+	}
+	start.onclick = function(){
+		timer = setInterval(show_date,1000);
+	}
+</script>
+</html>

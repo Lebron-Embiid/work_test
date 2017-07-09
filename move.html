@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas">
+		
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var cxt = canvas.getContext("2d");
+	canvas.width = 500;
+	canvas.height = 500;
+
+	var a = 0;
+	function draw(){
+		cxt.clearRect(0,0,canvas.width,canvas.height);
+		cxt.strokeStyle = "green";
+		cxt.setLineDash([6,3]);
+		cxt.lineDashOffset = -a;
+		cxt.strokeRect(50,50,100,100);
+	}
+	function show(){
+		a++;
+		if(a>16){
+			a=0;
+		}
+		draw();
+		setTimeout(show,30);
+	}
+	show();
+
+	// var radial = cxt.createRadialGradient(300,300,50,300,300,100);
+	// radial.addColorStop(0,"red");
+	// // radial.addColorStop(0.2,"#f60");
+	// radial.addColorStop(0.3,"yellow");
+	// // radial.addColorStop(0.5,"green");
+	// // radial.addColorStop(0.7,"blue");
+	// // radial.addColorStop(0.8,"green");
+	// radial.addColorStop(1,"#fff");
+	// cxt.fillStyle = radial;
+	// // cxt.arc(300,300,150,0,6.28);
+	// // cxt.fill();
+	// cxt.fillRect(200,200,300,200);
+
+
+	// var img = new Image();
+	// img.src = "1.jpg";
+	// img.onload = function(){
+	// 	var pic = cxt.createPattern(img,"repeat");
+	// 	cxt.lineWidth = 50;
+	// 	cxt.strokeStyle = pic;
+	// 	cxt.strokeRect(150,150,300,300);
+	// }
+
+	// cxt.beginPath();
+	// cxt.moveTo(130,30);
+	// cxt.arcTo(200,30,200,80,70);
+	// cxt.stroke();
+</script>
+</html>

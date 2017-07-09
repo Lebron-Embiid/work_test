@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="display:block;margin:0 auto;"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 700;
+	canvas.height = 700;
+
+	ctx.translate(canvas.width/2,canvas.width/2);
+	function draw(){
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.arc(0,0,250,0*Math.PI,1*Math.PI);
+		ctx.fill();
+
+		ctx.beginPath();
+		ctx.fillStyle = "#FF0002";
+		ctx.arc(0,0,250,1*Math.PI,2*Math.PI);
+		ctx.arc(125,0,125,0,1*Math.PI);
+		ctx.fill();
+
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.arc(-125,0,125,1,2*Math.PI);
+		ctx.fill();
+
+		ctx.beginPath();
+		ctx.arc(125,0,50,0,2*Math.PI);
+		ctx.fill();
+
+		ctx.beginPath();
+		ctx.fillStyle = "#FF0002";
+		ctx.arc(-125,0,50,0,2*Math.PI);
+		ctx.fill();
+	}
+	function move(){
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+		ctx.rotate(1*Math.PI/180);
+		draw();
+	}
+	move();
+	setInterval(move,10);
+</script>
+</html>

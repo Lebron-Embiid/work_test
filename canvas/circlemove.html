@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="echarts.min.js"></script>
+</head>
+<body>
+<canvas id="game" width="1300" height="600"></canvas>
+</body>
+<script>
+ function ball() {
+        this.r = this.rand(50);
+        this.x = this.rand(1300);
+        this.y = this.rand(600);
+        this.speedX = this.rand(10);
+        this.speedY = this.rand(10);
+        this.width = 0;
+        this.height = 0;
+        this.canvas = {};
+        this.color = 'rgba('+this.rand(255)+','+this.rand(255)+','+this.rand(255)+','+parseFloat(this.rand(1))+')';
+        this.init();
+    }
+ball.prototype = {
+        init:function () {
+            var game = document.getElementById('game');
+            this.canvas = game.getContext('2d');
+            this.width=1300;
+            this.height=600;
+        },
+        rand:function (num) {
+            return Math.floor(Math.random() * num+1);
+        },
+        play:function () {
+            this.y -= this.speedY;
+            this.canvas.beginPath();
+            this.canvas.fillStyle = this.color;
+            this.canvas.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+            this.canvas.fill();
+        }
+    };
+    // var arr = [];
+    // for (var i=0;i<100;i++) {
+        var circle = new ball();
+    // }
+    setInterval(function() {
+        // for (var i=0;i<100;i++) {
+        	// arr[i].canvas.clearRect(0,0,1300,600);
+        	circle.canvas.clearRect(0,0,1300,600);
+            circle.play();
+        // }
+    },50)
+</script>
+</html>

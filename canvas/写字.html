@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=750,minimum-scale=1.0,maximum-scale=1.0">
+	<style>
+		.box{
+			width:300px;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		canvas{
+			display: block;
+			margin-top:100px;
+		}
+		ul{
+			width:200px;
+			overflow: hidden;
+			list-style: none;
+			padding-left: 0;
+			float: left;
+		}
+		ul li{
+			width: 20px;
+			height: 21px;
+			float: left;
+			margin-right: 5px;
+			cursor: pointer;
+		}
+		input{
+			cursor: pointer;
+			outline: none;
+			display: block;
+			float: right;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<canvas id="canvas"></canvas>
+		<ul>
+			<li class="red" style="background:red"></li>
+			<li class="orange" style="background:orange"></li>
+			<li class="yellow" style="background:yellow"></li>
+			<li class="green" style="background:green"></li>
+			<li class="blue" style="background:blue"></li>
+			<li class="black" style="background:black"></li>
+		</ul>
+		<input type="button" value="清除" id="btn">
+	</div>
+</body>
+<script>
+	var cWidth = 300;
+	var cHeight = cWidth;
+	var canvas = document.getElementById("canvas");
+	var btn = document.getElementById("btn");
+	var oLi = document.getElementsByTagName("li");
+	var ctx = canvas.getContext('2d');
+	canvas.width = cWidth;
+	canvas.height = cHeight;
+
+	var isMouseDown = false;
+	var lastLoc = {x:0,y:0};
+
+	var color = [];
+	var sColor = "red";
+	for(var i=0;i<oLi.length;i++){
+		oLi[i].index = i;
+		color.push(oLi[i].className);
+		oLi[i].onclick = function(){
+			sColor = color[this.index];
+		}
+	}
+
+	btn.addEventListener("click",function(){
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+		drawGrid();
+	})
+
+	function drawGrid(){
+		ctx.save();
+		ctx.strokeStyle = "red";
+		ctx.lineWidth = 5;
+		ctx.beginPath();
+		ctx.moveTo(0,0),
+		ctx.lineTo(cWidth,0);
+		ctx.lineTo(cWidth,cHeight);
+		ctx.lineTo(0,cHeight);
+		ctx.closePath();
+		ctx.stroke();
+		ctx.restore();
+
+		ctx.save();
+		ctx.strokeStyle = "red";
+		ctx.lineWidth = 1;
+		ctx.beginPath();
+		ctx.moveTo(3,3);
+		ctx.lineTo(cWidth-3,cHeight-3);
+
+		ctx.moveTo(cWidth-3,3);
+		ctx.lineTo(3,cHeight-3);
+
+		ctx.moveTo(3,cHeight/2);
+		ctx.lineTo(cWidth-3,cHeight/2);
+
+		ctx.moveTo(cWidth/2,3);
+		ctx.lineTo(cWidth/2,cHeight-3);
+
+		ctx.setLineDash([4,2]);
+		ctx.stroke();
+		ctx.restore();
+	}
+	drawGrid();
+
+	function getClienXY(x,y){
+		var get = canvas.getBoundingClientRect();
+		return {x: Math.round(x-get.left),y: Math.round(y-get.top)};
+	}
+	canvas.addEventListener("mousedown",function(e){
+		e.preventDefault();
+		isMouseDown = true;
+		lastLoc = getClienXY(e.clientX,e.clientY);
+	})
+	canvas.addEventListener("mouseup",function(e){
+		e.preventDefault();
+		isMouseDown = false;
+	})
+	canvas.addEventListener("mouseout",function(e){
+		e.preventDefault();
+		isMouseDown = false;
+	})
+	
+	canvas.addEventListener("mousemove",function(e){
+		if(isMouseDown){
+			var curLoc = getClienXY(e.clientX,e.clientY);
+
+			ctx.beginPath();
+			ctx.lineWidth = 10;
+			ctx.strokeStyle = sColor;
+			ctx.moveTo(lastLoc.x,lastLoc.y);
+			ctx.lineTo(curLoc.x,curLoc.y);
+			ctx.stroke();
+			ctx.lineCap = "round";
+			ctx.closePath();
+
+			lastLoc = curLoc;
+		}
+	})
+</script>
+</html>

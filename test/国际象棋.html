@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	// document.write("<table border='1' cellspacing='0' cellpadding='0'>");
+	// for(var i=1;i<=8;i++){
+	// 	if(i%2==1){
+	// 		document.write("<tr>");
+	// 		for(var j=1;j<=8;j++){
+	// 			if(j%2==1){
+	// 				document.write("<td><div style='width:20px;height:20px;background:black;'></div></td>");
+	// 			}else{
+	// 				document.write("<td><div style='width:20px;height:20px;background:white;'></div></td>");
+	// 			}
+	// 		}
+	// 	}else{
+	// 		document.write("<tr>");
+	// 		for(var j=1;j<=8;j++){
+	// 			if(j%2==0){
+	// 				document.write("<td><div style='width:20px;height:20px;background:black;'></div></td>");
+	// 			}else{
+	// 				document.write("<td><div style='width:20px;height:20px;background:white;'></div></td>");
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// document.write("</table>");
+
+	document.write("<table border='1' cellspacing='0' cellpadding='0'>");
+	for(var i=1;i<=8;i++){
+		document.write("<tr>");
+		for(var j=1;j<=8;j++){
+			if((i+j)%2==0){
+				document.write("<td><div style='width:20px;height:20px;background:black;'></div></td>");
+			}else{
+				document.write("<td><div style='width:20px;height:20px;background:white;'></div></td>");
+			}
+		}
+	}
+	document.write("</table>");
+</script>
+</html>

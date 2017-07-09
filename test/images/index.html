@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{font-family: "黑体";}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	for(var i=1;i<=62;i++){
+		if(i<10){
+			document.write("<img src='0"+i+".gif'>");
+		}else{
+			document.write("<img src='"+i+".gif'>");
+		}
+		if(i%5 == 0){
+			document.write("<br>");
+		}
+	}
+	document.write("<br>");
+
+
+	for(var i=1;i<=10;i++){
+		for(var j=10;j>i;j--){
+			document.write("&nbsp;");
+		}
+		for(var n=1;n<2*i-1;n++){
+			if(n%2 == 0){
+				document.write("&nbsp;");
+			}else{
+				document.write("*");
+			}
+		}
+		document.write("<br>");
+	}
+
+
+	// 阶乘
+	function fn1(x){
+		if(x == 1 || x == 0){
+			return x = 1;
+		}else{
+			return fn1(x-1)*x;
+		}
+	}
+
+	function fn2(y){
+		return y+"!";
+	}
+
+	var str = window.prompt("请输入一个数字？","");
+	document.write(str+"的阶乘是:"+fn2(str)+"="+fn1(str));
+</script>
+</html>

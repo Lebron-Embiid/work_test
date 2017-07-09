@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas">
+		
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var cxt = canvas.getContext("2d");
+	canvas.width = 300;
+	canvas.height = 300;
+	canvas.style.border = "1px solid #000";
+
+	//最大的圆
+	cxt.beginPath();
+	cxt.arc(150,150,100,0,2*Math.PI);
+	cxt.closePath();
+	cxt.fillStyle = "#fff";
+	cxt.fill();
+
+	//红色部分
+	cxt.beginPath();
+	cxt.moveTo(50,100);
+	cxt.lineTo(100,150);
+	cxt.lineTo(150,100);
+	cxt.lineTo(200,100);
+	cxt.closePath();
+	cxt.fillStyle = "#DD5044";
+	cxt.fill();
+	cxt.beginPath();
+	cxt.arc(125,128,80,3.5,5.93);
+	cxt.fillStyle = "#DD5044";
+	cxt.fill();
+
+	//白圆
+	cxt.beginPath();
+	cxt.arc(150,150,50,0,2*Math.PI);
+	cxt.closePath();
+	cxt.fillStyle = "#fff";
+	cxt.fill();
+
+	//小圆
+	cxt.beginPath();
+	cxt.arc(150,150,40,0,2*Math.PI);
+	cxt.closePath();
+	cxt.fillStyle = "#4C8BF5";
+	cxt.fill();
+</script>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 1200;
+	canvas.height = 600;
+
+	ctx.font = "20px 黑体";
+	ctx.fillText("2011年1~3月服装生产前15名省市服装产量情况",400,100);
+	ctx.fill();
+
+	var a = -40;
+	var arr1 = [0,20000,40000,60000,80000,100000,120000,140000];
+	for(var i=0;i<arr1.length;i++){
+		a+=45.7;
+		ctx.moveTo(300,456-a);
+		ctx.lineTo(305,456-a);
+		ctx.textAlign = "center";
+		ctx.fillText(arr1[i],250,460-a);
+		ctx.stroke();
+	}
+	var b = 0;
+	for(var i=0;i<14;i++){
+		b+=40;
+		ctx.moveTo(300+b,450);
+		ctx.lineTo(300+b,445);
+		ctx.stroke();
+	}
+	var c = -80;
+	var arr2 = [-40,-20,0,20,40,60,80,100,120];
+	for(var i=0;i<arr2.length;i++){
+		c+=40;
+		ctx.moveTo(900,410-c);
+		ctx.lineTo(895,410-c);
+		ctx.textAlign = "center";
+		ctx.fillText(arr2[i],930,420-c);
+		ctx.stroke();
+	}
+	var arr3 = [150,250,280,305,320,400,420,420,420,425,430,425,435,440,440];
+	ctx.fillStyle = "#C6837D";
+	ctx.strokeStyle = "#000";
+	ctx.lineWidth = 1;
+	ctx.save();
+	var d = -40;
+	for(var i=0;i<arr3.length;i++){
+		d+=40;
+		ctx.fillRect(310+d,arr3[i],20,450-arr3[i]);
+		ctx.strokeRect(310+d,arr3[i],20,450-arr3[i]);
+		ctx.fill();
+		ctx.stroke();
+	}
+	var Cy = [335,350,355,330,340,310,360,230,180,370,420,320,295,335,370];
+	var e = -40;
+	for(var i=0;i<Cy.length;i++){
+		e+=40;
+		ctx.fillStyle = "#29055D";
+		ctx.beginPath();
+		ctx.arc(320+e,Cy[i],3,0,2*Math.PI);
+		ctx.closePath();
+		ctx.fill();
+	}
+	ctx.strokeRect(300,130,600,320);
+	ctx.stroke();
+
+	var f = -40;
+	ctx.moveTo(320,335);
+	ctx.setLineDash([2,6]);
+	for(var i=1;i<Cy.length;i++){
+		f+=40;
+		ctx.lineTo(360+f,Cy[i]);
+		ctx.stroke();
+		ctx.setLineDash([2,6]);
+	}
+	ctx.beginPath();
+	ctx.restore();
+	ctx.save();
+	ctx.fillRect(380,150,50,10);
+	ctx.strokeRect(380,150,50,10);
+	ctx.fill();
+	ctx.stroke();
+	ctx.closePath();
+
+	ctx.beginPath();
+	ctx.font = "12px 黑体";
+	ctx.fillStyle = "#000";
+	ctx.fillText("产量(万件)",470,160);
+	ctx.fill();
+	ctx.closePath();
+
+	ctx.beginPath();
+	ctx.strokeStyle = "#000";
+	ctx.moveTo(520,155);
+	ctx.lineTo(570,155);
+	ctx.setLineDash([4,2]);
+	ctx.stroke();
+	ctx.fillStyle = "#29055D";
+	ctx.arc(545,155,3,0,6.28);
+	ctx.fill();
+	ctx.closePath();
+
+	ctx.beginPath();
+	ctx.font = "12px 黑体";
+	ctx.fillStyle = "#000";
+	ctx.fillText("同比",590,160);
+	ctx.fill();
+	ctx.closePath();
+
+	ctx.beginPath();
+	ctx.restore();
+	ctx.moveTo(150,530);
+	ctx.lineTo(980,530);
+	ctx.lineTo(980,100);
+	ctx.stroke();
+
+	var str = "广东省 江苏省 浙江省 山东省 福建省 江西省 湖北省 安徽省 河南省 上海市 河北省 辽宁省 广西省 吉林省 湖南省";
+	ctx.beginPath();
+	ctx.font = "12px 黑体";
+	ctx.fillStyle = "#000";
+	ctx.textAlign = "center";
+	ctx.fillText(str,600,470);
+	ctx.fill();
+</script>
+</html>

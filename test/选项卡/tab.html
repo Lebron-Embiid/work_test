@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding: 0;}
+		body{background: #242423}
+		#box{
+			position: relative;
+			width:450px;
+			margin:20px auto;
+		}
+		#box div{
+			width:365px;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+		}
+		#box div.active{
+			display: block;
+		}
+		#box div img{
+			display: block;
+			height: 500px;
+		}
+		h4{
+			color:#fff;
+			text-align: center;
+			line-height: 30px;
+			background: #000;
+		}
+		#ul{
+			list-style: none;
+			position: absolute;
+			right: 0;
+		}
+		#ul li{
+			width:50px;
+			height: 50px;
+			background: #646463;
+			margin-bottom: 10px;
+			cursor: pointer;
+		}
+		#ul li:hover{
+			background: #FFCA2D;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="active">
+			<h4>1/4</h4>
+			<img src="1.png" alt="">
+			<h4>图片1</h4>
+		</div>
+		<div>
+			<h4>2/4</h4>
+			<img src="2.png" alt="">
+			<h4>图片2</h4>
+		</div>
+		<div>
+			<h4>3/4</h4>
+			<img src="3.png" alt="">
+			<h4>图片3</h4>
+		</div>
+		<div>
+			<h4>4/4</h4>
+			<img src="4.png" alt="">
+			<h4>图片4</h4>
+		</div>
+
+		<ul id="ul">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script>
+	var oDiv = document.querySelectorAll("#box div");
+	var oLi = document.querySelectorAll("#ul li");
+	for(var i=0;i<oLi.length;i++){
+		oLi[i].index = i;
+		oLi[i].onclick = function(){
+			for(var j=0;j<oLi.length;j++){
+				oDiv[j].className = "";
+			}
+			oDiv[this.index].className = "active";
+		}
+	}
+</script>
+</html>

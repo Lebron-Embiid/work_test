@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拼图</title>
+</head>
+<body>
+	<canvas id="canvas">
+		
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var cxt = canvas.getContext("2d");
+	canvas.width = 1000;
+	canvas.height = 500;
+
+	//dog
+	cxt.beginPath();
+	cxt.moveTo(45,30);
+	cxt.lineTo(62,48);
+	cxt.closePath();
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(55,40,15,1.2,4);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(77,48,15,0,3.14,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(110,30);
+	cxt.lineTo(92,48);
+	cxt.closePath();
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(98,40,15,2,5.5,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(61,54);
+	cxt.lineTo(61,100);
+	cxt.lineTo(50,100);
+	cxt.lineTo(50,130);
+	cxt.lineTo(90,130);
+	cxt.lineTo(120,160);
+	cxt.lineTo(120,110);
+	cxt.lineTo(140,90);
+	cxt.lineTo(120,70);
+	cxt.lineTo(100,95);
+	cxt.lineTo(92,90);
+	cxt.lineTo(92,54);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.fillStyle = "#67969E";
+	cxt.font = "18px Verdana";
+	cxt.fillText("小狗",65,120);
+
+	//稻草人
+	cxt.beginPath();
+	cxt.arc(80,200,16,0,6.28);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(30,240,15,1.57,4.71);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(130,240,15,1.57,4.71,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(30,225);
+	cxt.lineTo(130,225);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(30,255);
+	cxt.lineTo(65,255);
+	cxt.lineTo(65,325);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(130,255);
+	cxt.lineTo(95,255);
+	cxt.lineTo(95,325);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(80,325,15,0,3.14,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.fillStyle = "#67969E";
+	cxt.font = "18px Verdana";
+	cxt.fillText("稻",70,250);
+	cxt.fillText("草",70,270);
+	cxt.fillText("人",70,290);
+
+	//大板车
+	cxt.beginPath();
+	cxt.moveTo(255,280);
+	cxt.lineTo(325,280);
+	cxt.lineTo(325,250);
+	cxt.lineTo(365,250);
+	cxt.lineTo(365,280);
+	cxt.lineTo(380,280);
+	cxt.lineTo(380,310);
+	cxt.lineTo(365,310);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(335,310);
+	cxt.lineTo(300,310);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(255,295,15,1.57,4.71);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(285,310,15,0,3.14);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(350,310,15,0,3.14);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(270,310);
+	cxt.lineTo(255,310);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.fillStyle = "#67969E";
+	cxt.font = "18px Verdana";
+	cxt.fillText("大板车",285,300);
+
+	//手枪
+	cxt.beginPath();
+	cxt.moveTo(500,270);
+	cxt.lineTo(550,270);
+	cxt.lineTo(550,300);
+	cxt.lineTo(580,300);
+	cxt.lineTo(580,330);
+	cxt.lineTo(610,330);
+	cxt.lineTo(610,270);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(500,255,15,1.57,4.71);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(515,240,15,0,3.14,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(530,240);
+	cxt.lineTo(610,240);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(610,255,15,1.57,4.71,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.fillStyle = "#67969E";
+	cxt.font = "18px Verdana";
+	cxt.fillText("手枪",560,280);
+
+	//小鹿
+	cxt.beginPath();
+	cxt.moveTo(545,30);
+	cxt.lineTo(562,48);
+	cxt.closePath();
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(555,40,15,1.2,4);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(577,48,15,0,3.14,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(610,30);
+	cxt.lineTo(592,48);
+	cxt.closePath();
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.arc(598,40,15,2,5.5,true);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(561,54);
+	cxt.lineTo(561,100);
+	cxt.lineTo(520,100);
+	cxt.lineTo(520,155);
+	cxt.lineTo(555,125);
+	cxt.lineTo(565,125);
+	cxt.lineTo(592,155);
+	cxt.lineTo(592,54);
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.fillStyle = "#67969E";
+	cxt.font = "18px Verdana";
+	cxt.fillText("小鹿",540,120);
+
+	//女孩
+	cxt.beginPath();
+	cxt.arc(299,50,15,0,6.28);
+	cxt.fillStyle = "#92437A";
+	cxt.strokeStyle = "#fff";
+	cxt.fill();
+	cxt.stroke();
+
+	cxt.beginPath();
+	cxt.moveTo(290,120);
+	cxt.lineTo(260,150);
+	cxt.lineTo(380,150);
+	cxt.lineTo(310,90);
+	cxt.strokeStyle = "#fff";
+	cxt.fillStyle = "#92437A";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.arc(321,70,15,0.72,3.86,true);
+	cxt.fillStyle = "#92437A";
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.moveTo(310,60);
+	cxt.lineTo(310,120);
+	cxt.lineTo(280,120);
+	cxt.lineTo(280,80);
+	cxt.fillStyle = "#92437A";
+	cxt.strokeStyle = "#fff";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.arc(295,120,15,0,3.14,true);
+	cxt.fillStyle = "#92437A";
+	cxt.strokeStyle = "#fff";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.moveTo(290,120);
+	cxt.lineTo(290,150);
+	cxt.fillStyle = "#92437A";
+	cxt.strokeStyle = "#fff";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.moveTo(300,121);
+	cxt.lineTo(330,145);
+	cxt.fillStyle = "#92437A";
+	cxt.strokeStyle = "#fff";
+	cxt.stroke();
+	cxt.fill();
+
+	cxt.beginPath();
+	cxt.fillStyle = "#67969E";
+	cxt.font = "18px Verdana";
+	cxt.fillText("女",350,80);
+	cxt.fillText("孩",350,100);
+	cxt.closePath();
+
+	cxt.beginPath();
+	cxt.fillStyle = "#fff";
+	cxt.font = "10px Arial";
+	cxt.fillText("1",295,55);
+	cxt.fillText("2",290,95);
+	cxt.fillText("3",297,140);
+	cxt.fillText("4",277,143);
+	cxt.fillText("5",330,135);
+	cxt.fillText("6",322,70);
+	cxt.fillText("7",290,118);
+
+
+</script>
+</html>

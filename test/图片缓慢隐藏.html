@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.div{
+			width:300px;
+			height: 550px;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		.div img{
+			display: block;
+			width:300px;
+			height: 550px;
+		}
+		.btn{
+			width:100px;
+			height: 30px;
+			margin:10px auto 0;
+		}
+		/*.on{
+			animation: show 3s linear forwards;
+		}
+		.off{
+			animation: hide 3s linear forwards;
+		}
+		@keyframes show{
+			from{
+				height: 550px;
+			}
+			to{
+				height: 0;
+			}
+		}
+		@keyframes hide{
+			from{
+				height: 0;
+			}
+			to{
+				height: 550px;
+			}
+		}*/
+	</style>
+</head>
+<body>
+	<div class="div" style="height:550px">
+		<img src="tab1.jpg" alt="">
+	</div>
+	<div class="btn">
+		<input type="button" value="显示" class="show">
+		<input type="button" value="隐藏" class="hide">
+	</div>
+</body>
+<script>
+	var div = document.querySelector(".div");
+	var show = document.querySelector(".show");
+	var hide = document.querySelector(".hide");
+	var n = 0;
+	var m = 0;
+	var timer;
+	hide.onclick = tohide;
+	function tohide(){
+		clearInterval(timer);
+		n--;
+		div.style.height = 550+n+"px";
+		timer = setInterval(tohide,1);
+		if(div.style.height == 0+"px"){
+			clearInterval(timer);
+			n=0;
+			show.disabled = false;
+		}else{
+			show.disabled = true;
+		}
+	}
+	show.onclick = toshow;
+	function toshow(){
+		clearInterval(timer);
+		m++;
+		if(m > 550){
+			m = 550;
+		}
+		div.style.height = m+"px";
+		timer = setInterval(toshow,1);
+		if(div.style.height == "550px"){
+			clearInterval(timer);
+			m=0;
+			hide.disabled = false;
+		}else{
+			hide.disabled = true;
+		}
+	}
+</script>
+</html>

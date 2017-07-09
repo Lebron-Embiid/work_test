@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="box" v-if="login">
+		<!-- <p v-text="year+'年'+month+'月'+day+'日'"></p> -->
+		<ul class="rank">
+			<li v-for="(singer,index) in singers">{{singer.NO}}.{{singer.name}} -- {{index}}</li>
+		</ul>
+	</div>
+	<div class="img">
+		<a v-bind:href="href1" v-html="msg"></a>
+	</div>
+	<ul class="event">
+		<li @click="clickEvent('lebron')">click</li>
+		<li v-on:dblclick="dblclickEvent">dblclick</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+		// el:"#box",
+		el:'.event',
+		// data:{
+		// 	year:new Date().getFullYear(),
+		// 	month:new Date().getMonth()+1,
+		// 	day:new Date().getDate(),
+		// 	hour:new Date().getHours(),
+		// 	minute:new Date().getMinutes(),
+		// 	second:new Date().getSeconds(),
+		// }
+		// el:".img",
+		data:{
+			msg:"<img src='demo/5.jpg'/>",
+			href1:"http://www.baidu.com",
+			seen:6,
+			login:false,
+			singers:[
+				{NO:1,name:"周杰伦"},
+				{NO:2,name:"薛之谦"},
+				{NO:3,name:"邓紫棋"}
+			]
+		},
+		methods:{
+			clickEvent:function(p){
+				alert(this.singers[0].name+p);
+			},
+			dblclickEvent:function(){
+				alert("dblclick");
+			},
+			mouseoverEvent:function(){
+				alert("mouseover");
+			},
+			mouseoutEvent:function(){
+				alert("mouseout");
+			}
+		}
+	});
+</script>
+</html>

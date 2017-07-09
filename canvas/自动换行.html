@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<style>
+		input{
+			display: block;
+			border:10px solid #A7FF93;
+			line-height: 20px;
+			text-indent: 10px;
+			color:#24AFE5;
+			font-size: 20px;
+			font-weight: bold;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<input name="" id="input" type="text" style="width:500px;height:100px"></input>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var input = document.getElementById("input");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 520;
+	canvas.height = 330;
+
+	var g1 = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+	g1.addColorStop(0,"red");
+	g1.addColorStop(0.5,"green");
+	g1.addColorStop(1,"yellow");
+	ctx.strokeStyle = g1;
+	ctx.lineWidth = 10;
+	ctx.strokeRect(0,0,canvas.width,canvas.height);
+	ctx.stroke();
+
+	ctx.font = "16px 黑体";
+	ctx.fillStyle = "#000";
+	var txt = "放在如今工资帽大涨的背景下，巴特勒无疑是一名物美价廉的全明星球员，且还有三年合同在身（2019-20赛季为球员选项），极其拥有交易价值。骑士在2017年总决赛大比分1-4输给勇士过后，目前正在厉兵秣马，积极补强，先前已经联系步行者，准备交易得到乔治，现在又开始追求巴特勒。 相比追求乔治，骑士在追求巴特勒的时候出价更高，愿意送出乐福。不过，在目前这支骑士里边，他们没有优质的年轻球员和选秀权，无法激起公牛的兴趣，需要找一个第三方球队提供选秀权等优质筹码，进行一次三方交易。这让骑士在交易得到巴特勒的过程中处于被动位置。相比骑士来说，森林狼、凯尔特人、太阳等球队在追求巴特勒的过程中，处于领跑位置。这三支球队都拥有大量潜力新星，还拥有足够吸引人的选秀权，就看公牛愿意和谁交易。凯尔特人早就想得到巴特勒，但因为和公牛在筹码上无法达成一致，双方一直无法达成协议。森林狼总裁汤姆-锡伯杜是巴特勒恩师，深得巴特勒敬重，巴特勒正是在锡伯杜手上打出来。对于年轻的森林狼来说，他们正需要一个像巴勒特这样有杀手特质的领袖，而如果森林狼开出的筹码合适，公牛也可以避免把巴勒特送给同区对手，达到双赢的结果。";
+	var arr = "";
+						 	  //字符串,canvas,开始绘制的X轴距离,开始绘制的Y轴距离,行高
+	function canvasTextAutoLine(str,canvas,initX,initY,lineHeight){
+    var ctx = canvas.getContext("2d"); 
+    var lineWidth = 0;
+    var canvasWidth = canvas.width-20;	//文字所占宽度
+    var lastSubStrIndex= 0; 
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);	//清空画布
+
+    var g1 = ctx.createLinearGradient(0,0,canvas.width,canvas.height);	//canvas边框渐变
+	g1.addColorStop(0,"red");
+	g1.addColorStop(0.5,"green");
+	g1.addColorStop(1,"yellow");
+	ctx.strokeStyle = g1;
+
+	var g2 = ctx.createLinearGradient(0,0,canvas.width,canvas.height);	//canvas文字填充渐变
+	g2.addColorStop(0,"red");
+	g2.addColorStop(0.2,"#f60");
+	g2.addColorStop(0.5,"green");
+	g2.addColorStop(0.8,"gray");
+	g2.addColorStop(1,"yellow");
+	ctx.fillStyle = g2;
+	ctx.lineWidth = 10;
+	ctx.strokeRect(0,0,canvas.width,canvas.height);
+	ctx.stroke();
+    for(let i=0;i<str.length;i++){ 
+        lineWidth+=ctx.measureText(str[i]).width; 
+        if(lineWidth>canvasWidth-initX){//减去initX,防止边界出现的问题
+            ctx.fillText(str.substring(lastSubStrIndex,i),initX,initY);
+            initY+=lineHeight;
+            lineWidth=0;
+            lastSubStrIndex=i;
+        } 
+        if(i==str.length-1){
+            ctx.fillText(str.substring(lastSubStrIndex,i+1),initX,initY);
+        }
+    }
+  }
+	input.onkeyup = function(){
+		arr=input.value;
+  		canvasTextAutoLine(arr,canvas,10,20,20);
+	}
+</script>
+</html>

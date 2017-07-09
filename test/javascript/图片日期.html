@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<p id="p"></p>
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+	<script type="text/javascript">
+	var P=document.getElementById("p")
+	var Img=document.getElementsByTagName("img");
+	function show(){
+		var myDate = new Date();
+		var Myear=myDate.getFullYear();//年
+		var Mmot =myDate.getMonth()+1;//月
+		var Mdat =myDate.getDate(); //日
+		var Mhou =myDate.getHours();//时
+		var Mnut =myDate.getMinutes(); //分
+		var Mcon =myDate.getSeconds();//秒
+		// var str=Myear+'.'+Mmot+'.'+Mdat+'.'+Mhou+'.'+Mnut+'.'+Mcon;
+	var str=fn1(Myear)+'.'+fn1(Mmot)+'.'+fn1(Mdat)+'.'+fn1(Mhou)+'.'+fn1(Mnut)+'.'+fn1(Mcon)
+		P.innerHTML=str;
+		for(var i=0;i<str.length;i++){
+			Img[i].src="images/"+str.charAt(i)+".jpg";
+		}
+	}
+	function fn1(e){
+		// if(e<10){
+		// 	return "0"+e
+		// }else{
+		// 	return ""+e
+		// }
+		return e<10 ? "0"+e : ""+e
+		//三元运算
+	}
+	x.getElementsByTagName("div")
+	setInterval(show,1000);
+	show();
+
+	</script>
+</body>
+</html>

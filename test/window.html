@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		ul{list-style: none;}
+		.div_top{
+			width:1311px;
+			height: 100px;
+			background: -webkit-linear-gradient(right,#4893FF,#D8E5FF);
+			border: 5px solid #677EDC;
+			border-bottom: 0;
+		}
+		.div_top ul li{
+			float: left;
+			line-height: 100px;
+			margin-left: 30px;
+		}
+		.div_top ul li a{
+			color:#000;
+			text-decoration: none;
+			padding: 5px 10px;
+		}
+		.div_top ul li a:hover{
+			background: #1979CA;
+			color:#fff;
+			border-radius: 5px;
+		}
+		.div_left{
+			width:20%;
+			height: 530px;
+			background: #677EDC;
+			float: left;
+			border-radius: 5px;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		.div_right{
+			width:80%;
+			height: 530px;
+			background: #FCFCFC;
+			float: left;
+			border-radius: 5px;
+		}
+		.div_right ul{
+			height: 530px;
+			position: relative;
+		}
+		.div_right li{
+			width:95%;
+			height: 520px;
+			background: #FCFCFC;
+			border-radius: 5px;
+			position: absolute;
+			top:0;
+			left: 0;
+			border: 5px solid #677EDC;
+			border-top-right-radius: 0;
+			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
+		}
+		#ul_box>li{
+			width: 90%;
+			overflow: hidden;
+			position: relative;
+			margin:10px auto 0;
+			line-height: 32px;
+			background: #FFFCFF url("down.png")right center no-repeat;
+			border-radius: 5px;
+			text-indent: 10px;
+			cursor: pointer;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		#ul_box>li.active{
+			background: #FFFCFF url("up.png")right center no-repeat;			
+		}
+		#ul_box>li+ul{
+			width:90%;
+			overflow: hidden;
+			background: #D5DCF6;
+			padding: 10px 0;
+			margin:0 auto 20px;
+		}
+		#ul_box>li+ul li{
+			line-height: 33px;
+			text-indent: 50px;
+			background: url(windows.png)10px center no-repeat;
+		}
+		#ul_box>li+ul li:hover{
+			cursor: pointer;
+			background:#FFFCFF url(windows.png)10px center no-repeat;
+		}
+
+		.div_right li h3{
+			padding: 30px;
+		}
+		/*@keyframes move{
+			from{
+				display: block;
+			}
+			to{
+				display: none;
+			}
+		}
+		#ul_box li:hover .move{
+			animation: move 1s linear;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="div_box">
+		<div class="div_top">
+			<ul>
+				<li><a href="">文件</a></li>
+				<li><a href="">计算机</a></li>
+				<li><a href="">查看</a></li>
+			</ul>
+		</div>
+		<div class="div_left">
+			<ul id="ul_box">
+				<li>系统任务</li>
+				<ul class="move">
+					<li>查看系统信息</li>
+					<li>添加/删除程序</li>
+					<li>更改一个设置</li>
+				</ul>
+				<li>其他位置</li>
+				<ul>
+					<li>网上邻居</li>
+					<li>我的文档</li>
+					<li>共享文档</li>
+					<li>控制面板</li>
+				</ul>
+				<li>详细信息</li>
+				<ul>
+					<li>我的电脑</li>
+					<li>系统文件夹</li>
+				</ul>
+			</ul>
+		</div>
+		<div class="div_right" id="div_right">
+			<ul>
+				<li><h3>共享文档</h3></li>
+				<li><h3>Admin文档</h3></li>
+				<li><h3>本地磁盘(C:)</h3></li>
+				<li><h3>本地磁盘(D:)</h3></li>
+				<li><h3>本地磁盘(E:)</h3></li>
+				<li><h3>本地磁盘(F:)</h3></li>
+				<li><h3>本地磁盘(G:)</h3></li>
+				<li><h3>可移动磁盘(H:)</h3></li>
+				<li><h3>可移动磁盘(I:)</h3></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+	var ul_box = document.getElementById("ul_box");
+	var uLi = document.querySelectorAll("#ul_box>li");
+	var uUl = document.querySelectorAll("#ul_box>li+ul");
+	var left_li = document.querySelectorAll("#ul_box>li+ul li");
+	var div_right = document.getElementById("div_right");
+	var right_li = div_right.getElementsByTagName("li");
+	var n = 1;
+	var m = 1;
+	var t = 1;
+	for(var i=0;i<uLi.length;i++){
+		uLi[i].index = i;
+		function common(i,n){
+			uLi[i].onclick = function(){
+				if(n==1){
+					this.className = "active";
+					uUl[i].style.display = "none";
+					n=0;
+				}else{
+					this.className = "";
+					uUl[i].style.display = "block";
+					n=1;
+				}
+			}
+		}
+		common(0,n);
+		common(1,m);
+		common(2,t);
+	}
+	for(var m=0;m<left_li.length;m++){
+		left_li[m].index = m;
+		left_li[m].onclick = function(){
+			for(var n=0;n<left_li.length;n++){
+				right_li[n].style.display = "none";
+			}
+			right_li[this.index].style.display = "block";
+		}
+	}
+</script>
+</html>

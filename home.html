@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas">
+		
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var cxt = canvas.getContext("2d");
+	canvas.width = 1000;
+	canvas.height = 500;
+	//蓝色正方形部分
+	cxt.beginPath();
+	cxt.moveTo(210,60);
+	cxt.lineTo(215,45);
+	cxt.lineTo(220,45);
+	cxt.lineTo(225,60);
+	cxt.closePath();
+	cxt.strokeStyle = "blue";
+	cxt.fillStyle = "blue";
+	cxt.fillRect(150,50,100,100);
+	cxt.fill();
+	cxt.stroke();
+	//黄色平行四边形部分
+	cxt.beginPath();
+	cxt.moveTo(120,150);
+	cxt.lineTo(290,150);
+	cxt.lineTo(190,250);
+	cxt.lineTo(20,250);
+	cxt.closePath();
+	cxt.fillStyle = "yellow";
+	cxt.strokeStyle = "#000";
+	cxt.fill();
+	cxt.stroke();
+	//绿色三角形部分
+	cxt.beginPath();
+	cxt.moveTo(190,250);
+	cxt.lineTo(490,250);
+	cxt.lineTo(340,100);
+	cxt.closePath();
+	cxt.strokeStyle = "blue";
+	cxt.fillStyle = "green";
+	cxt.fill();
+	cxt.stroke();
+	//红色三角形部分
+	cxt.beginPath();
+	cxt.moveTo(60,250);
+	cxt.lineTo(280,250);
+	cxt.lineTo(60,400);
+	cxt.closePath();
+	cxt.fillStyle = "red";
+	cxt.strokeStyle = "#000";
+	cxt.fill();
+	cxt.stroke();
+	//天蓝色三角形部分
+	cxt.beginPath();
+	cxt.moveTo(60,400);
+	cxt.lineTo(450,400);
+	cxt.lineTo(280,250);
+	cxt.fillStyle = "#5ABCFF";
+	cxt.strokeStyle = "#000";
+	cxt.fill();
+	cxt.stroke();
+	//土色三角形部分
+	cxt.beginPath();
+	cxt.moveTo(280,250);
+	cxt.lineTo(450,250);
+	cxt.lineTo(360,320);
+	cxt.fillStyle = "#C69B2C";
+	cxt.strokeStyle = "#000";
+	cxt.fill();
+	cxt.stroke();
+	//灰绿色三角形部分
+	cxt.beginPath();
+	cxt.moveTo(450,250);
+	cxt.lineTo(450,400);
+	cxt.lineTo(360,320);
+	cxt.fillStyle = "#6F5500";
+	cxt.fill();
+</script>
+</html>

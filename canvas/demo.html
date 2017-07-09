@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="show.js"></script>
+</head>
+<body>
+	<canvas id="canvas">
+		你的浏览器居然不支持Canvas？！赶快换一个吧！！
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas');
+	var cxt = canvas.getContext("2d");
+	canvas.width = 1000;
+	canvas.height = 500;
+	cxt.beginPath();
+	cxt.moveTo(30,120);
+	cxt.lineTo(60,0);
+	cxt.lineTo(90,100);
+	cxt.lineTo(120,0);
+	cxt.lineTo(150,120);
+	cxt.closePath();	//闭合路劲
+	cxt.lineWidth = 10;	//线条宽度
+	cxt.strokeStyle = "red";	//线条颜色
+	cxt.fillStyle = "yellow";	//填充颜色
+	cxt.fill();			//填充
+	cxt.stroke();		//描边
+</script>
+</html>

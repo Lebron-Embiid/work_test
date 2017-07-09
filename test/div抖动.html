@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding: 0;}
+		div{
+			width:100px;
+			height: 100px;
+			background: red;
+			float: left;
+			margin: 200px 10px 0 0;
+			position: relative;
+		}
+		div:first-of-type{
+			margin-left: 80px;
+		}
+		div.active{
+			animation: move .5s linear;
+		}
+		@keyframes move{
+			0%{
+				top:0;
+				bottom:0;
+			}
+			10%{
+				top:-30px;
+				bottom: -30px;
+			}
+			20%{
+				top:20px;
+				bottom: 20px;
+			}
+			30%{
+				top:-20px;
+				bottom: -20px;
+			}
+			40%{
+				top:30px;
+				bottom: 30px;
+			}
+			50%{
+				top: -30px;
+				bottom: -30px;
+			}
+			80%{
+				top: 30px;
+				bottom: 30px;
+			}
+			90%{
+				top:-20px;
+				bottom: -20px;
+			}
+			95%{
+				top:10px;
+				bottom: 10px;
+			}
+			100%{
+				top:0;
+				bottom: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	var div = document.getElementsByTagName("div");
+	// alert(div.length)
+
+	for(var i=0;i<div.length;i++){
+		div[i].onmouseover = function(){
+			this.className = "active";
+		}
+		div[i].onmouseout = function(){
+			this.className = "";
+		}
+	}
+</script>
+</html>

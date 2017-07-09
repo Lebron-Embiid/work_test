@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		svg{
+			background: rgba(12,34,56,.3)
+		}
+		.cloud{
+			stroke-dasharray:1200;
+			stroke-dashoffset:1200;
+			-webkit-animation: move 3s linear forwards;
+			-o-animation: move 3s linear forwards;
+			animation: move 3s linear forwards;
+		}
+		.cloudback{
+			stroke-dasharray:1200;
+			stroke-dashoffset:1200;
+			-webkit-animation: move 3s linear 3s forwards;
+			-o-animation: move 3s linear 3s forwards;
+			animation: move 3s linear 3s forwards;
+		}
+		@keyframes move{
+			to{
+				stroke-dashoffset:0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<svg width="500" height="400" style="border:1px solid #000">
+		<path d="M100 200 A25 50 -30 0 1 150 120 A30 50 -20 0 1 250 100 A30 50 0 0 1 350 100 A30 50 30 0 1 400 180 A200 100 0 0 1 100 200" style="stroke:rgba(255,255,0,.5);fill:none;stroke-width:2" class="cloud"/>
+		<path d="M100 200 A200 100 0 0 0 400 180 A30 50 30 0 0 350 100 A30 50 0 0 0 250 100 A30 50 -20 0 0 150 120 A25 50 -30 0 0 100 200" style="stroke:yellow;fill:none;stroke-width:3" class="cloudback"/>
+	</svg>
+</body>
+</html>

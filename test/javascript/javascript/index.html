@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.li{
+		color: red;
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+<!-- <a href="baidu.com" id="a">123</a>
+<img id="img" src="images/01.gif" alt=""> -->
+	<script type="text/javascript">
+// 	function cleanWhitespace(oEelement)
+// {
+//  for(var i=0;i<oEelement.childNodes.length;i++){
+//   var node=oEelement.childNodes[i];
+//   if(node.nodeType==3 && !/\S/.test(node.nodeValue)){node.parentNode.removeChild(node)}
+//   }
+// }	
+// cleanWhitespace(document.getElementById("ul"))
+ // console.log(document.getElementById("ul").lastChild)
+ // document.getElementById("ul").lastChild.parentNode.style.color="red";
+ // var x=document.getElementById("ul");
+ // 	x.previousSibling.previousSibling.style.color="red";
+
+// getAttribute
+//  console.log(document.getElementById("img").getAttribute("src"));
+// document.getElementById("img").setAttribute("src","images/03.gif");
+var Li=document.getElementsByTagName("li");
+	for(var i=0;i<Li.length;i++){
+		// document.write(Li[i].innerHTML)
+		Li[i].index=i;
+
+
+
+		Li[i].onclick=function(){
+			// this.className="1123"
+			console.log(this.index)
+		}
+	}
+	// for(x in Li){
+	// 	document.write(Li[x].innerHTML)
+	// 	console.log(Li[x]);
+	// }
+	function show(){
+
+	}
+	
+</script>
+</body>
+</html>

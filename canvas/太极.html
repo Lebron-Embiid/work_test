@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			animation: rotate 2s linear forwards;
+		}
+		@keyframes rotate{
+			from{
+				transform:rotate(0deg);
+			}
+			to{
+				transform:rotate(90deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas">
+		
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas');
+	var cxt = canvas.getContext("2d");
+	canvas.width = 1000;
+	canvas.height = 500;
+	var clg = cxt.createLinearGradient(0,0,800,400);
+	clg.addColorStop(0,"red");
+	clg.addColorStop(0.1,"#FF6F00");
+	clg.addColorStop(0.3,"yellow");
+	clg.addColorStop(0.5,"green");
+	clg.addColorStop(0.6,"#5DFFCE");
+	clg.addColorStop(0.8,"blue");
+	clg.addColorStop(1,"#C100F0");
+	cxt.rect(50,50,800,400);
+	cxt.fillStyle = clg;
+	cxt.fill();
+
+	//大圆
+	cxt.beginPath();
+	cxt.arc(500,250,100,0,2*Math.PI);
+	cxt.closePath();
+	cxt.strokeStyle = "#000";
+	cxt.stroke();
+
+	//黑色半圆
+	cxt.beginPath();
+	cxt.arc(500,250,100,0,1*Math.PI);
+	cxt.closePath();
+	cxt.fillStyle = "#000";
+	cxt.fill();
+
+	//白色半圆
+	cxt.beginPath();
+	cxt.arc(500,250,100,0,1*Math.PI,true);
+	cxt.closePath();
+	cxt.fillStyle = "#fff";
+	cxt.fill();
+
+	//逆时针椭圆
+	cxt.beginPath();
+	cxt.arc(550,250,50,0,1*Math.PI,true);
+	cxt.closePath();
+	cxt.fillStyle = "#000";
+	cxt.fill();
+
+	//顺时针椭圆
+	cxt.beginPath();
+	cxt.arc(450,250,50,0,1*Math.PI);
+	cxt.closePath();
+	cxt.fillStyle = "#fff";
+	cxt.fill();
+	
+	//白圆
+	cxt.beginPath();
+	cxt.arc(550,250,20,0,2*Math.PI);
+	cxt.closePath();
+	cxt.fillStyle = "#fff";
+	cxt.fill();
+
+	//黑圆
+	cxt.beginPath();
+	cxt.arc(450,250,20,0,2*Math.PI);
+	cxt.closePath();
+	cxt.fillStyle = "#000";
+	cxt.fill();
+</script>
+</html>

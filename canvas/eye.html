@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="display:block;margin:0 auto;"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = 700;
+	canvas.height = 600;
+
+	var a=0;
+	function draw(){
+		a+=1;
+		if(a==380){
+			a=0;
+		}
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+		ctx.fill();
+		ctx.beginPath();
+		ctx.fillStyle = "#FF0000";
+		ctx.fillRect(0,200,700,200);
+		ctx.fill();
+
+		ctx.save();
+		ctx.translate(10,300);
+		ctx.beginPath();
+		ctx.strokeStyle = "#000";
+		ctx.fillStyle = "#fff";
+		ctx.moveTo(0,0);
+		ctx.quadraticCurveTo(340,-190+a,680,0);
+		ctx.quadraticCurveTo(340,190-a,0,0);
+		ctx.closePath();
+		ctx.fill();
+		ctx.restore();
+
+		ctx.save();
+		ctx.clip();
+		ctx.translate(350,300);
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.arc(0,0,80,0,2*Math.PI);
+		ctx.fill();
+		ctx.beginPath();
+		ctx.fillStyle = "#f00";
+		ctx.arc(0,0,20,0,2*Math.PI);
+		ctx.fill();
+		ctx.beginPath();
+		ctx.strokeStyle = "#000";
+		ctx.fillStyle = "#fff";
+		ctx.moveTo(-12,-8);
+		ctx.lineTo(-12,8);
+		ctx.lineTo(-8,12);
+		ctx.lineTo(8,12);
+		ctx.lineTo(12,8);
+		ctx.lineTo(12,-8);
+		ctx.lineTo(8,-12);
+		ctx.lineTo(-8,-12);
+		ctx.closePath();
+		ctx.stroke();
+		ctx.fill();
+		ctx.restore();
+	}
+	draw();
+	setInterval(draw,10);
+</script>
+</html>

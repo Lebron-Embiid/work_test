@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>index</title>
+	<style type="text/css">
+		input{
+			float: left;
+		}
+		#text{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" name="" value="-" id="btn_minus">
+	<input type="text" name="" id="text" value="1">
+	<input type="button" name="" value="+" id="btn_add">
+	<p id="p">30</p>
+</body>
+<script type="text/javascript">
+	var p = document.getElementById("p");
+	var btn_minus = document.getElementById("btn_minus");
+	var btn_add = document.getElementById("btn_add");
+	var text = document.getElementById("text");
+
+	btn_add.onclick=function(){
+		text.value++;
+		p.innerHTML = parseInt(text.value*30);
+	}
+	btn_minus.onclick=function(){
+		if(text.value<=1){
+			text.value=1;
+		}else{
+			text.value--;
+			p.innerHTML = parseInt(text.value*30);
+		}
+	}
+	text.oninput=function(){
+		if(text.value<1){
+			text.value=1;
+		}else{
+			text.innerHTML = text.value;
+			p.innerHTML=parseInt(text.value*30);
+		}
+	}
+</script>
+</html>
